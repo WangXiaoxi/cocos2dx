@@ -26,7 +26,7 @@
 #include "cocos2d.h"
 
 USING_NS_CC;
-
+using namespace cocos2d;
 int main(int argc, char *argv[])
 {
     AppDelegate app;
