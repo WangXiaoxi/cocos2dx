@@ -29,8 +29,10 @@ bool HelloWorld::init()
     
     Size visibleSize = Director::getInstance()->getVisibleSize();
     TableView *tb = TableView::create(this, Size(300, 300));
+//    auto *tb = TableView::create(this, Size(300,300));
 //    tb->setAnchorPoint(Vec2(0, 0));
     tb->setPosition(visibleSize.width/2, visibleSize.height/2);
+    tb->setDelegate(this);
 //    addChild(tb);
 //    auto sprite = Sprite::create("HelloWorld.png");
 //    sprite->autorelease();
@@ -64,6 +66,12 @@ TableViewCell* HelloWorld::tableCellAtIndex(cocos2d::extension::TableView *table
 ssize_t HelloWorld::numberOfCellsInTableView(cocos2d::extension::TableView *table)
 {
     return 100;
+}
+
+void HelloWorld::tableCellTouched(cocos2d::extension::TableView *table, cocos2d::extension::TableViewCell *cell)
+{
+    Label* label = (Label*)cell->getChildByTag(2);
+    log("%s--is touched",label->getString().c_str());
 }
 
 void HelloWorld::menuCloseCallback(Ref* pSender)

@@ -7,7 +7,7 @@
 USING_NS_CC;
 USING_NS_CC_EXT;
 
-class HelloWorld : public cocos2d::Layer,TableViewDataSource
+class HelloWorld : public cocos2d::Layer,TableViewDataSource,TableViewDelegate
 {
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
@@ -45,6 +45,18 @@ public:
      * @return number of cells
      */
     virtual ssize_t numberOfCellsInTableView(TableView *table);
+public:
+    /**
+     * @js NA
+     * @lua NA
+     */
+    virtual void scrollViewDidScroll(ScrollView* view){};
+    /**
+     * @js NA
+     * @lua NA
+     */
+    virtual void scrollViewDidZoom(ScrollView* view){};
+    virtual void tableCellTouched(TableView* table, TableViewCell* cell);
 };
 
 #endif // __HELLOWORLD_SCENE_H__
