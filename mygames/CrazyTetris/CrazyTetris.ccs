@@ -1,0 +1,15 @@
+<Solution>
+  <PropertyGroup Name="CrazyTetris" Version="2.1.2.0" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <Project Name="GameScene.csd" Type="Scene" />
+        <Image Name="HelloWorld.png" />
+        <Image Name="bg.png" />
+        <Project Name="MenuScene.csd" Type="Scene" />
+        <Image Name="1.png" />
+        <Image Name="3.png" />
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>

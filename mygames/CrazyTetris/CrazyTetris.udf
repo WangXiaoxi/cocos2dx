@@ -1,0 +1,25 @@
+<UserData>
+  <OpenedDocuments>
+    <FilePathData Path="GameScene.csd" />
+    <FilePathData Path="MenuScene.csd" />
+  </OpenedDocuments>
+  <ActiveDocument Path="GameScene.csd" />
+  <Properties>
+    <Item Key="PackageParamsKey">
+      <Value ctype="PackageParams">
+        <LuaIsEncrypt Value="False" />
+        <LuaEncryptKey Value="" />
+        <LuaEncryptSign Value="" />
+        <Android_PackageName Value="org.cocos.CrazyTetris" />
+        <AndroidkeyStore Value="" />
+        <AndroidVersion Value="" />
+        <iOS_Target Value="CrazyTetris iOS" />
+        <iOS_BundleID Value="" />
+        <Platform Value="Android" />
+        <PublishSetting Value="XCode" />
+        <FrameworkVersion Value="cocos2d-x-3.4" />
+        <IsDebugKeystore Value="True" />
+      </Value>
+    </Item>
+  </Properties>
+</UserData>
