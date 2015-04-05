@@ -44,12 +44,18 @@ bool HelloWorld::init()
     auto listener = EventListenerTouchOneByOne::create();
     listener->onTouchBegan = [label,this](Touch * t , Event * e){
         
-        if (label->getBoundingBox().containsPoint(t->getLocation()))
+        
+        return true;
+    };
+    
+    listener->onTouchEnded = [](Touch*t,Event*e){
+        
+        if (e->getCurrentTarget()->getBoundingBox().containsPoint(t->getLocation()))
         {
             Director::getInstance()->pushScene(TransitionFadeBL::create(1, ImageScene::createScene()));
         }
-    
-        return true;
+        
+        
     };
     
     Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, label);
