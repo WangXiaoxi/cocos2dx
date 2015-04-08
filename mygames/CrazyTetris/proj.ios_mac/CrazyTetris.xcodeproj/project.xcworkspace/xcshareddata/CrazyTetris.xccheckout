@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A172C1F0-8215-4EF4-A7EF-DBC3A8C0E261</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CrazyTetris</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>BDC2A4261F8C170D93E04CE76E37CAB288C95794</key>
+		<string>https://github.com/WangXiaoxi/cocos2dx.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>mygames/CrazyTetris/proj.ios_mac/CrazyTetris.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>BDC2A4261F8C170D93E04CE76E37CAB288C95794</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/WangXiaoxi/cocos2dx.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>BDC2A4261F8C170D93E04CE76E37CAB288C95794</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BDC2A4261F8C170D93E04CE76E37CAB288C95794</string>
+			<key>IDESourceControlWCCName</key>
+			<string>cocos2dx</string>
+		</dict>
+	</array>
+</dict>
+</plist>

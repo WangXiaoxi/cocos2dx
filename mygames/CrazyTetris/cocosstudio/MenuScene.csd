@@ -1,5 +1,5 @@
 <GameProjectFile>
-  <PropertyGroup Type="Scene" Name="MenuScene" ID="7aafd9f4-4a3e-405f-b490-33a8c978b5df" Version="2.1.2.0" />
+  <PropertyGroup Type="Scene" Name="MenuScene" ID="7aafd9f4-4a3e-405f-b490-33a8c978b5df" Version="2.2.1.0" />
   <Content ctype="GameProjectContent">
     <Content>
       <Animation Duration="0" Speed="1.0000" />
@@ -43,5 +43,7 @@
         </Children>
       </ObjectData>
     </Content>
+    <CameraPosition ValueX="0.0000" ValueY="5.0000" ValueZ="-1.0000" />
+    <CameraRotation ValueX="0.0000" ValueY="0.0000" ValueZ="0.0000" />
   </Content>
 </GameProjectFile>

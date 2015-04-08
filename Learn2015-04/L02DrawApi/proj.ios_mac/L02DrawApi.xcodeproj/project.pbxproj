@@ -461,10 +461,7 @@
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"",
-					"/Applications/Cocos/frameworks/cocos2d-x-3.4/prebuilt/ios",
-				);
+				LIBRARY_SEARCH_PATHS = " /Applications/Cocos/frameworks/cocos2d-x-3.4/prebuilt/ios";
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
@@ -498,10 +495,7 @@
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"",
-					"/Applications/Cocos/frameworks/cocos2d-x-3.4/prebuilt/ios",
-				);
+				LIBRARY_SEARCH_PATHS = " /Applications/Cocos/frameworks/cocos2d-x-3.4/prebuilt/ios";
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
@@ -537,10 +531,7 @@
 					"/Applications/Cocos/frameworks/cocos2d-x-3.4/external/glfw3/include/mac",
 				);
 				INFOPLIST_FILE = mac/Info.plist;
-				LIBRARY_SEARCH_PATHS = (
-					"",
-					"/Applications/Cocos/frameworks/cocos2d-x-3.4/prebuilt/mac",
-				);
+				LIBRARY_SEARCH_PATHS = " /Applications/Cocos/frameworks/cocos2d-x-3.4/prebuilt/mac";
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_MAC_BEGIN)",
 					"$(_COCOS_LIB_MAC_END)",
@@ -571,10 +562,7 @@
 					"/Applications/Cocos/frameworks/cocos2d-x-3.4/external/glfw3/include/mac",
 				);
 				INFOPLIST_FILE = mac/Info.plist;
-				LIBRARY_SEARCH_PATHS = (
-					"",
-					"/Applications/Cocos/frameworks/cocos2d-x-3.4/prebuilt/mac",
-				);
+				LIBRARY_SEARCH_PATHS = " /Applications/Cocos/frameworks/cocos2d-x-3.4/prebuilt/mac";
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_MAC_BEGIN)",
 					"$(_COCOS_LIB_MAC_END)",

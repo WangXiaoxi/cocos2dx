@@ -1,9 +1,4 @@
 <UserData>
-  <OpenedDocuments>
-    <FilePathData Path="GameScene.csd" />
-    <FilePathData Path="MenuScene.csd" />
-  </OpenedDocuments>
-  <ActiveDocument Path="GameScene.csd" />
   <Properties>
     <Item Key="PackageParamsKey">
       <Value ctype="PackageParams">
@@ -19,6 +14,15 @@
         <PublishSetting Value="XCode" />
         <FrameworkVersion Value="cocos2d-x-3.4" />
         <IsDebugKeystore Value="True" />
+      </Value>
+    </Item>
+    <Item Key="TabsParamsKey">
+      <Value ctype="TabsInfo">
+        <OpenedDocuments>
+          <FilePathData Path="GameScene.csd" />
+          <FilePathData Path="MenuScene.csd" />
+        </OpenedDocuments>
+        <ActiveDocument Path="GameScene.csd" />
       </Value>
     </Item>
   </Properties>
