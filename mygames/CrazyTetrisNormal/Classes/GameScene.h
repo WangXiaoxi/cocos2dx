@@ -14,6 +14,7 @@
 
 #include "Block.h"
 
+#include "MacroData.h"
 
 USING_NS_CC;
 
@@ -30,9 +31,6 @@ private:
     //游戏暂停状态
     bool running = true;
 private:
-    
-    Block *currentBlock;        //当前的方块
-    Block *nextBlock;           //下一个方块
     
     Button * btnPause;          //暂停
     Button * btnBack;           //返回
@@ -64,15 +62,13 @@ public:
     };
     
 public:
-    static PhysicsWorld * world;
+
     static Scene * createScene();
     
     virtual bool init();
     
     CREATE_FUNC(GameScene);
     
-    void addCurrentBlock(float x, float y);
-    void addCurrentBlock(Vec2 position);
 };
 
 #endif /* defined(__CrazyTetris__GameScene__) */

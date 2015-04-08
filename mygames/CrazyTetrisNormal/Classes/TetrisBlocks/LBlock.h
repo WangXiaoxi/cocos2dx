@@ -10,5 +10,14 @@
 #define __CrazyTetris__LBlock__
 //L型方块
 #include <stdio.h>
+#include "Block.h"
+
+class LBlock : public Block
+{
+    
+    
+public:
+    CREATE_FUNC(LBlock);
+};
 
 #endif /* defined(__CrazyTetris__LBlock__) */

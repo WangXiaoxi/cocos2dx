@@ -10,5 +10,13 @@
 #define __CrazyTetris__QBlock__
 //田字形，正方形方块
 #include <stdio.h>
+#include "Block.h"
+
+class QBlock : Block {
+    
+public:
+    
+    CREATE_FUNC(QBlock);
+};
 
 #endif /* defined(__CrazyTetris__QBlock__) */

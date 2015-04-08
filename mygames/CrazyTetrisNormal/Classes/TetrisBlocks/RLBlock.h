@@ -10,5 +10,14 @@
 #define __CrazyTetris__RLBlock__
 //反L型方块
 #include <stdio.h>
+#include "Block.h"
+
+class RLBlock : public Block
+{
+    
+public:
+    CREATE_FUNC(RLBlock);
+    
+};
 
 #endif /* defined(__CrazyTetris__RLBlock__) */

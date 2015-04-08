@@ -14,7 +14,7 @@
 		<string>https://github.com/WangXiaoxi/cocos2dx.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>mygames/CrazyTetris/proj.ios_mac/CrazyTetris.xcodeproj</string>
+	<string>mygames/CrazyTetrisNormal/proj.ios_mac/CrazyTetris.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>BDC2A4261F8C170D93E04CE76E37CAB288C95794</key>
