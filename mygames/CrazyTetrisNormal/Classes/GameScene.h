@@ -40,8 +40,11 @@ private:
     Button * btnDown;           //加速下落
     Button * btnDownIMD;        //立即下落
     
-    Layer * gameViewLayer;
-    Layer * nextBlockLayer;
+    
+    Layer * gameViewLayer; //游戏区域Layer
+    
+    Layer * nextBlockLayer; //待下落区域Layer
+    
     
 public:
     

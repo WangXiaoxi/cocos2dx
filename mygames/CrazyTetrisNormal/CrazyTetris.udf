@@ -16,5 +16,14 @@
         <IsDebugKeystore Value="True" />
       </Value>
     </Item>
+    <Item Key="TabsParamsKey">
+      <Value ctype="TabsInfo">
+        <OpenedDocuments>
+          <FilePathData Path="GameScene.csd" />
+          <FilePathData Path="MenuScene.csd" />
+        </OpenedDocuments>
+        <ActiveDocument Path="GameScene.csd" />
+      </Value>
+    </Item>
   </Properties>
 </UserData>

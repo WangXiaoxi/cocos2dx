@@ -100,11 +100,11 @@
             <PressedFileData Type="Default" Path="Default/Button_Press.png" />
             <NormalFileData Type="Default" Path="Default/Button_Normal.png" />
           </NodeObjectData>
-          <NodeObjectData Name="gameLayer" ActionTag="1223253681" FrameEvent="" Tag="6" LeftMargin="51.4998" RightMargin="188.5002" TopMargin="43.4999" BottomMargin="116.5001" TouchEnable="True" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
+          <NodeObjectData Name="gameLayer" ActionTag="1223253681" Alpha="254" FrameEvent="" Tag="6" LeftMargin="51.5000" RightMargin="188.5000" TopMargin="43.5200" BottomMargin="116.4800" TouchEnable="True" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
             <Position X="251.5000" Y="514.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.4969" />
-            <CColor A="255" R="255" G="255" B="255" />
+            <CColor A="255" R="144" G="91" B="70" />
             <Size X="400.0000" Y="800.0000" />
             <PrePosition X="0.3930" Y="0.5354" />
             <PreSize X="0.6250" Y="0.8333" />

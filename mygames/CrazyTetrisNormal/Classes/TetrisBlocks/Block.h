@@ -11,11 +11,14 @@
 
 #include <stdio.h>
 #include <cocos2d.h>
+#include "BlockNode.h"
 
 USING_NS_CC;
 
 class Block : public Sprite{
     
+private:
+    BlockNode nodes[4][4];
 public:
     virtual bool init();
     CREATE_FUNC(Block);

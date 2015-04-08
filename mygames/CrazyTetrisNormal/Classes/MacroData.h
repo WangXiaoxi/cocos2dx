@@ -9,10 +9,10 @@
 #ifndef CrazyTetris_MacroData_h
 #define CrazyTetris_MacroData_h
 
-#define VISIBLE_SIZE \
-{\
-   return Director::getInstance()->getVisibleSize();     \
-}
+#define GAME_VIEW_WIDTH 400
+#define GAME_VIEW_HEIGHT 800
 
+#define NODE_WIDTH GAME_VIEW_WIDTH/10
+#define NODE_HEIGHT NODE_WIDTH
 
 #endif

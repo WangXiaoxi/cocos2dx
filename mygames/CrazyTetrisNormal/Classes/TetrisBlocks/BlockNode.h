@@ -10,5 +10,25 @@
 #define __CrazyTetris__BlockNode__
 
 #include <stdio.h>
+#include <cocos2d.h>
+#include "MacroData.h"
+
+USING_NS_CC;
+
+class BlockNode : public Node
+{
+
+private:
+    bool isExist;
+    DrawNode * dn; // 画笔
+    
+public:
+    
+    virtual bool init();
+    virtual bool initWithArgs(std::string filename);
+    virtual bool initWithArgs(Color4F color);
+    
+    CREATE_FUNC(BlockNode);
+};
 
 #endif /* defined(__CrazyTetris__BlockNode__) */

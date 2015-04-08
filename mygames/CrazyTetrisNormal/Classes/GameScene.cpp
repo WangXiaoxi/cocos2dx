@@ -10,6 +10,10 @@
 #include <cocostudio/CocoStudio.h>
 #include <CocosGUI.h>
 
+/**************************************/
+#include "BlockNode.h"
+/**************************************/
+
 #define INIT_BUTTON(__VAR__,__ROOT__,__NAME__,__TAG__,__CLICK_CALLBACK__) \
 __VAR__ = static_cast<Button*>(__ROOT__->getChildByName(__NAME__)); \
 __VAR__ -> setTag(__TAG__); \
@@ -36,6 +40,21 @@ Scene * GameScene::createScene()
     return scene;
 }
 
+void drawGameLayerLines(Layer * gameLayer)
+{
+    DrawNode * drawNode = DrawNode::create();
+    for (int i = 0;i<21 ;i++ )
+    {
+        drawNode->drawLine(Vec2(0, i*NODE_HEIGHT), Vec2(GAME_VIEW_WIDTH, i*NODE_HEIGHT), Color4F::GRAY);
+    }
+    for (int i = 0; i<11; i++)
+    {
+        drawNode->drawLine(Vec2(i*NODE_WIDTH,0), Vec2(i*NODE_WIDTH, GAME_VIEW_HEIGHT), Color4F::GRAY);
+    }
+    drawNode->drawRect(Vec2::ZERO, Vec2(GAME_VIEW_WIDTH, GAME_VIEW_HEIGHT), Color4F::BLACK);
+    gameLayer->addChild(drawNode);
+}
+
 bool GameScene::init()
 {
     if (!Layer::init())
@@ -53,10 +72,18 @@ bool GameScene::init()
     gameViewLayer = static_cast<Layer*>(rootNode->getChildByName("gameLayer"));
     nextBlockLayer = static_cast<Layer*>(rootNode->getChildByName("nextLayer"));
     
-    auto drawLines = DrawNode::create();
-    drawLines->drawRect(Vec2(0, 0), Vec2(20, 20), Color4F::RED);
-    nextBlockLayer->addChild(drawLines);
-    drawLines->setPosition(nextBlockLayer->getAnchorPoint());
+    drawGameLayerLines(gameViewLayer);
+    
+    log("%f",gameViewLayer->getContentSize().width);
+    
+    BlockNode * node = BlockNode::create();
+    node->initWithArgs("1.png");
+    nextBlockLayer->addChild(node);
+    node->setPosition(Vec2(nextBlockLayer->getContentSize().width/2, nextBlockLayer->getContentSize().height/2));
+//    auto drawLines = DrawNode::create();
+//    drawLines->drawRect(Vec2(0, 0), Vec2(40, 40), Color4F::RED);
+//    nextBlockLayer->addChild(drawLines);
+//    drawLines->setPosition(nextBlockLayer->getAnchorPoint());
     
     //定义按钮监听器
     ui::Widget::ccWidgetClickCallback btnClickCallback = [this](Ref * ref)
