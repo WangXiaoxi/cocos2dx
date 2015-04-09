@@ -87,7 +87,7 @@
             <PressedFileData Type="Default" Path="Default/Button_Press.png" />
             <NormalFileData Type="Default" Path="Default/Button_Normal.png" />
           </NodeObjectData>
-          <NodeObjectData Name="rightButton" ActionTag="-300790355" FrameEvent="" Tag="15" LeftMargin="190.3521" RightMargin="403.6479" TopMargin="979.8044" BottomMargin="120.1955" TouchEnable="True" FontSize="14" ButtonText="-》" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
+          <NodeObjectData Name="rightButton" ActionTag="-300790355" FrameEvent="" Tag="15" LeftMargin="190.3521" RightMargin="403.6479" TopMargin="979.8045" BottomMargin="120.1955" TouchEnable="True" FontSize="14" ButtonText="-》" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
             <Position X="213.3521" Y="138.1955" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />

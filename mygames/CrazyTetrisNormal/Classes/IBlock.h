@@ -14,8 +14,7 @@
 
 class IBlock : public BaseBlock
 {
-private:
-    Node *node;
+
 public:
     virtual bool init();
     void setRotation90();
