@@ -15,13 +15,19 @@
 
 USING_NS_CC;
 
-class BaseBlock : public Sprite{
-    
-private:
+class BaseBlock : public Node
+{
+protected:
+    int rotateTimes=0;
+protected:
+    Sprite * sprite;
     BlockNode nodes[4][4];
 public:
     virtual bool init();
+    void setRotation90();
     CREATE_FUNC(BaseBlock);
+    
+    
 };
 
 #endif /* defined(__CrazyTetris__Block__) */

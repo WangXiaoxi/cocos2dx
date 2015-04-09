@@ -12,6 +12,7 @@
 
 /**************************************/
 #include "BlockNode.h"
+#include "IBlock.h"
 /**************************************/
 
 #define INIT_BUTTON(__VAR__,__ROOT__,__NAME__,__TAG__,__CLICK_CALLBACK__) \
@@ -85,8 +86,13 @@ bool GameScene::init()
 //    nextBlockLayer->addChild(drawLines);
 //    drawLines->setPosition(nextBlockLayer->getAnchorPoint());
     
-    //定义按钮监听器
-    ui::Widget::ccWidgetClickCallback btnClickCallback = [this](Ref * ref)
+    
+    auto iBlock = IBlock::create();
+//    iBlock->setColor(Color3B::RED);
+    iBlock->setPosition(Vec2(gameViewLayer->getContentSize().width/2, gameViewLayer->getContentSize().height/2));
+    gameViewLayer->addChild(iBlock);
+        //定义按钮监听器
+    ui::Widget::ccWidgetClickCallback btnClickCallback = [this,iBlock](Ref * ref)
         {
             Button * btn = static_cast<Button*>(ref);
             switch (btn->getTag()) {
@@ -106,7 +112,7 @@ bool GameScene::init()
                    
                     break;
                 case ROTATE:
-                    
+                    iBlock->setRotation90();
                     break;
                 case DOWN:
                     break;
