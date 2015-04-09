@@ -16,28 +16,28 @@
 		46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8419C43A87006E1F66 /* AppDelegate.cpp */; };
 		46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */; };
 		46880B8B19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */; };
-		4A2743AC1AD4D1BD004E2338 /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A2743AA1AD4D1BD004E2338 /* Block.cpp */; };
-		4A2743AD1AD4D1BD004E2338 /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A2743AA1AD4D1BD004E2338 /* Block.cpp */; };
-		4A2743B01AD4D1CF004E2338 /* BlockNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A2743AE1AD4D1CF004E2338 /* BlockNode.cpp */; };
-		4A2743B11AD4D1CF004E2338 /* BlockNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A2743AE1AD4D1CF004E2338 /* BlockNode.cpp */; };
-		4A47ACB71AD4C6C70058D255 /* QBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A47ACB51AD4C6C70058D255 /* QBlock.cpp */; };
-		4A47ACB81AD4C6C70058D255 /* QBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A47ACB51AD4C6C70058D255 /* QBlock.cpp */; };
-		4A47ACBB1AD4C73C0058D255 /* LBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A47ACB91AD4C73C0058D255 /* LBlock.cpp */; };
-		4A47ACBC1AD4C73C0058D255 /* LBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A47ACB91AD4C73C0058D255 /* LBlock.cpp */; };
-		4A47ACBF1AD4C7550058D255 /* IBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A47ACBD1AD4C7550058D255 /* IBlock.cpp */; };
-		4A47ACC01AD4C7550058D255 /* IBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A47ACBD1AD4C7550058D255 /* IBlock.cpp */; };
-		4A47ACC31AD4C7810058D255 /* RLBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A47ACC11AD4C7810058D255 /* RLBlock.cpp */; };
-		4A47ACC41AD4C7810058D255 /* RLBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A47ACC11AD4C7810058D255 /* RLBlock.cpp */; };
-		4A47ACC71AD4C79E0058D255 /* ZBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A47ACC51AD4C79E0058D255 /* ZBlock.cpp */; };
-		4A47ACC81AD4C79E0058D255 /* ZBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A47ACC51AD4C79E0058D255 /* ZBlock.cpp */; };
-		4A47ACCB1AD4C7B40058D255 /* RZBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A47ACC91AD4C7B40058D255 /* RZBlock.cpp */; };
-		4A47ACCC1AD4C7B40058D255 /* RZBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A47ACC91AD4C7B40058D255 /* RZBlock.cpp */; };
-		4A47ACCF1AD4C7CD0058D255 /* TBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A47ACCD1AD4C7CD0058D255 /* TBlock.cpp */; };
-		4A47ACD01AD4C7CD0058D255 /* TBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A47ACCD1AD4C7CD0058D255 /* TBlock.cpp */; };
-		4AAD1C3B1AA8296C002A1D2B /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4AAD1C391AA8296C002A1D2B /* MenuScene.cpp */; };
-		4AAD1C3C1AA8296C002A1D2B /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4AAD1C391AA8296C002A1D2B /* MenuScene.cpp */; };
-		4AAD1C3F1AA834BF002A1D2B /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4AAD1C3D1AA834BF002A1D2B /* GameScene.cpp */; };
-		4AAD1C401AA834BF002A1D2B /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4AAD1C3D1AA834BF002A1D2B /* GameScene.cpp */; };
+		4A28ADC41AD65A5100DF9A70 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A28ADC01AD65A5100DF9A70 /* MenuScene.cpp */; };
+		4A28ADC51AD65A5100DF9A70 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A28ADC01AD65A5100DF9A70 /* MenuScene.cpp */; };
+		4A28ADC61AD65A5100DF9A70 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A28ADC21AD65A5100DF9A70 /* GameScene.cpp */; };
+		4A28ADC71AD65A5100DF9A70 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A28ADC21AD65A5100DF9A70 /* GameScene.cpp */; };
+		4A28ADD71AD65AF600DF9A70 /* IBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A28ADC91AD65AF600DF9A70 /* IBlock.cpp */; };
+		4A28ADD81AD65AF600DF9A70 /* IBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A28ADC91AD65AF600DF9A70 /* IBlock.cpp */; };
+		4A28ADD91AD65AF600DF9A70 /* LBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A28ADCB1AD65AF600DF9A70 /* LBlock.cpp */; };
+		4A28ADDA1AD65AF600DF9A70 /* LBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A28ADCB1AD65AF600DF9A70 /* LBlock.cpp */; };
+		4A28ADDB1AD65AF600DF9A70 /* QBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A28ADCD1AD65AF600DF9A70 /* QBlock.cpp */; };
+		4A28ADDC1AD65AF600DF9A70 /* QBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A28ADCD1AD65AF600DF9A70 /* QBlock.cpp */; };
+		4A28ADDD1AD65AF600DF9A70 /* RLBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A28ADCF1AD65AF600DF9A70 /* RLBlock.cpp */; };
+		4A28ADDE1AD65AF600DF9A70 /* RLBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A28ADCF1AD65AF600DF9A70 /* RLBlock.cpp */; };
+		4A28ADDF1AD65AF600DF9A70 /* RZBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A28ADD11AD65AF600DF9A70 /* RZBlock.cpp */; };
+		4A28ADE01AD65AF600DF9A70 /* RZBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A28ADD11AD65AF600DF9A70 /* RZBlock.cpp */; };
+		4A28ADE11AD65AF600DF9A70 /* TBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A28ADD31AD65AF600DF9A70 /* TBlock.cpp */; };
+		4A28ADE21AD65AF600DF9A70 /* TBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A28ADD31AD65AF600DF9A70 /* TBlock.cpp */; };
+		4A28ADE31AD65AF600DF9A70 /* ZBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A28ADD51AD65AF600DF9A70 /* ZBlock.cpp */; };
+		4A28ADE41AD65AF600DF9A70 /* ZBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A28ADD51AD65AF600DF9A70 /* ZBlock.cpp */; };
+		4A28ADEA1AD65B2000DF9A70 /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A28ADE61AD65B2000DF9A70 /* Block.cpp */; };
+		4A28ADEB1AD65B2000DF9A70 /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A28ADE61AD65B2000DF9A70 /* Block.cpp */; };
+		4A28ADEC1AD65B2000DF9A70 /* BlockNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A28ADE81AD65B2000DF9A70 /* BlockNode.cpp */; };
+		4A28ADED1AD65B2000DF9A70 /* BlockNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A28ADE81AD65B2000DF9A70 /* BlockNode.cpp */; };
 		503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
 		503AE10017EB989F00D1A890 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FB17EB989F00D1A890 /* AppController.mm */; };
 		503AE10117EB989F00D1A890 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FC17EB989F00D1A890 /* main.m */; };
@@ -94,29 +94,29 @@
 		46880B8519C43A87006E1F66 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HelloWorldScene.cpp; sourceTree = "<group>"; };
 		46880B8719C43A87006E1F66 /* HelloWorldScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloWorldScene.h; sourceTree = "<group>"; };
-		4A2743A81AD4CBD6004E2338 /* MacroData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroData.h; sourceTree = "<group>"; };
-		4A2743AA1AD4D1BD004E2338 /* Block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Block.cpp; path = TetrisBlocks/Block.cpp; sourceTree = "<group>"; };
-		4A2743AB1AD4D1BD004E2338 /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Block.h; path = TetrisBlocks/Block.h; sourceTree = "<group>"; };
-		4A2743AE1AD4D1CF004E2338 /* BlockNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BlockNode.cpp; path = TetrisBlocks/BlockNode.cpp; sourceTree = "<group>"; };
-		4A2743AF1AD4D1CF004E2338 /* BlockNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlockNode.h; path = TetrisBlocks/BlockNode.h; sourceTree = "<group>"; };
-		4A47ACB51AD4C6C70058D255 /* QBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = QBlock.cpp; path = TetrisBlocks/QBlock.cpp; sourceTree = "<group>"; };
-		4A47ACB61AD4C6C70058D255 /* QBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QBlock.h; path = TetrisBlocks/QBlock.h; sourceTree = "<group>"; };
-		4A47ACB91AD4C73C0058D255 /* LBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LBlock.cpp; path = TetrisBlocks/LBlock.cpp; sourceTree = "<group>"; };
-		4A47ACBA1AD4C73C0058D255 /* LBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LBlock.h; path = TetrisBlocks/LBlock.h; sourceTree = "<group>"; };
-		4A47ACBD1AD4C7550058D255 /* IBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IBlock.cpp; path = TetrisBlocks/IBlock.cpp; sourceTree = "<group>"; };
-		4A47ACBE1AD4C7550058D255 /* IBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBlock.h; path = TetrisBlocks/IBlock.h; sourceTree = "<group>"; };
-		4A47ACC11AD4C7810058D255 /* RLBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RLBlock.cpp; path = TetrisBlocks/RLBlock.cpp; sourceTree = "<group>"; };
-		4A47ACC21AD4C7810058D255 /* RLBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RLBlock.h; path = TetrisBlocks/RLBlock.h; sourceTree = "<group>"; };
-		4A47ACC51AD4C79E0058D255 /* ZBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ZBlock.cpp; path = TetrisBlocks/ZBlock.cpp; sourceTree = "<group>"; };
-		4A47ACC61AD4C79E0058D255 /* ZBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZBlock.h; path = TetrisBlocks/ZBlock.h; sourceTree = "<group>"; };
-		4A47ACC91AD4C7B40058D255 /* RZBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RZBlock.cpp; path = TetrisBlocks/RZBlock.cpp; sourceTree = "<group>"; };
-		4A47ACCA1AD4C7B40058D255 /* RZBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RZBlock.h; path = TetrisBlocks/RZBlock.h; sourceTree = "<group>"; };
-		4A47ACCD1AD4C7CD0058D255 /* TBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TBlock.cpp; path = TetrisBlocks/TBlock.cpp; sourceTree = "<group>"; };
-		4A47ACCE1AD4C7CD0058D255 /* TBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TBlock.h; path = TetrisBlocks/TBlock.h; sourceTree = "<group>"; };
-		4AAD1C391AA8296C002A1D2B /* MenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuScene.cpp; sourceTree = "<group>"; };
-		4AAD1C3A1AA8296C002A1D2B /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
-		4AAD1C3D1AA834BF002A1D2B /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
-		4AAD1C3E1AA834BF002A1D2B /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		4A28ADBF1AD65A5100DF9A70 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
+		4A28ADC01AD65A5100DF9A70 /* MenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuScene.cpp; sourceTree = "<group>"; };
+		4A28ADC11AD65A5100DF9A70 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		4A28ADC21AD65A5100DF9A70 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
+		4A28ADC31AD65A5100DF9A70 /* MacroData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroData.h; sourceTree = "<group>"; };
+		4A28ADC91AD65AF600DF9A70 /* IBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IBlock.cpp; sourceTree = "<group>"; };
+		4A28ADCA1AD65AF600DF9A70 /* IBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBlock.h; sourceTree = "<group>"; };
+		4A28ADCB1AD65AF600DF9A70 /* LBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LBlock.cpp; sourceTree = "<group>"; };
+		4A28ADCC1AD65AF600DF9A70 /* LBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBlock.h; sourceTree = "<group>"; };
+		4A28ADCD1AD65AF600DF9A70 /* QBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QBlock.cpp; sourceTree = "<group>"; };
+		4A28ADCE1AD65AF600DF9A70 /* QBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBlock.h; sourceTree = "<group>"; };
+		4A28ADCF1AD65AF600DF9A70 /* RLBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RLBlock.cpp; sourceTree = "<group>"; };
+		4A28ADD01AD65AF600DF9A70 /* RLBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RLBlock.h; sourceTree = "<group>"; };
+		4A28ADD11AD65AF600DF9A70 /* RZBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RZBlock.cpp; sourceTree = "<group>"; };
+		4A28ADD21AD65AF600DF9A70 /* RZBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RZBlock.h; sourceTree = "<group>"; };
+		4A28ADD31AD65AF600DF9A70 /* TBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TBlock.cpp; sourceTree = "<group>"; };
+		4A28ADD41AD65AF600DF9A70 /* TBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBlock.h; sourceTree = "<group>"; };
+		4A28ADD51AD65AF600DF9A70 /* ZBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ZBlock.cpp; sourceTree = "<group>"; };
+		4A28ADD61AD65AF600DF9A70 /* ZBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBlock.h; sourceTree = "<group>"; };
+		4A28ADE61AD65B2000DF9A70 /* Block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Block.cpp; path = TetrisBlocks/Block.cpp; sourceTree = "<group>"; };
+		4A28ADE71AD65B2000DF9A70 /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Block.h; path = TetrisBlocks/Block.h; sourceTree = "<group>"; };
+		4A28ADE81AD65B2000DF9A70 /* BlockNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BlockNode.cpp; path = TetrisBlocks/BlockNode.cpp; sourceTree = "<group>"; };
+		4A28ADE91AD65B2000DF9A70 /* BlockNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlockNode.h; path = TetrisBlocks/BlockNode.h; sourceTree = "<group>"; };
 		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		503AE0F717EB97AB00D1A890 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503AE0FA17EB989F00D1A890 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = ios/AppController.h; sourceTree = SOURCE_ROOT; };
@@ -284,50 +284,50 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				4A47ACB01AD4C6030058D255 /* TetrisBlocks */,
+				4A28ADE51AD65B0300DF9A70 /* TetrisBlocks */,
+				4A28ADBF1AD65A5100DF9A70 /* MenuScene.h */,
+				4A28ADC01AD65A5100DF9A70 /* MenuScene.cpp */,
+				4A28ADC11AD65A5100DF9A70 /* GameScene.h */,
+				4A28ADC21AD65A5100DF9A70 /* GameScene.cpp */,
+				4A28ADC31AD65A5100DF9A70 /* MacroData.h */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 				46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */,
 				46880B8719C43A87006E1F66 /* HelloWorldScene.h */,
-				4AAD1C3A1AA8296C002A1D2B /* MenuScene.h */,
-				4AAD1C391AA8296C002A1D2B /* MenuScene.cpp */,
-				4AAD1C3E1AA834BF002A1D2B /* GameScene.h */,
-				4AAD1C3D1AA834BF002A1D2B /* GameScene.cpp */,
-				4A2743A81AD4CBD6004E2338 /* MacroData.h */,
 			);
 			name = Classes;
 			path = ../Classes;
 			sourceTree = "<group>";
 		};
-		4A2743A91AD4D188004E2338 /* blocks */ = {
+		4A28ADC81AD65ABD00DF9A70 /* Blocks */ = {
 			isa = PBXGroup;
 			children = (
-				4A47ACB51AD4C6C70058D255 /* QBlock.cpp */,
-				4A47ACB61AD4C6C70058D255 /* QBlock.h */,
-				4A47ACB91AD4C73C0058D255 /* LBlock.cpp */,
-				4A47ACBA1AD4C73C0058D255 /* LBlock.h */,
-				4A47ACBD1AD4C7550058D255 /* IBlock.cpp */,
-				4A47ACBE1AD4C7550058D255 /* IBlock.h */,
-				4A47ACC11AD4C7810058D255 /* RLBlock.cpp */,
-				4A47ACC21AD4C7810058D255 /* RLBlock.h */,
-				4A47ACC51AD4C79E0058D255 /* ZBlock.cpp */,
-				4A47ACC61AD4C79E0058D255 /* ZBlock.h */,
-				4A47ACC91AD4C7B40058D255 /* RZBlock.cpp */,
-				4A47ACCA1AD4C7B40058D255 /* RZBlock.h */,
-				4A47ACCD1AD4C7CD0058D255 /* TBlock.cpp */,
-				4A47ACCE1AD4C7CD0058D255 /* TBlock.h */,
+				4A28ADC91AD65AF600DF9A70 /* IBlock.cpp */,
+				4A28ADCA1AD65AF600DF9A70 /* IBlock.h */,
+				4A28ADCB1AD65AF600DF9A70 /* LBlock.cpp */,
+				4A28ADCC1AD65AF600DF9A70 /* LBlock.h */,
+				4A28ADCD1AD65AF600DF9A70 /* QBlock.cpp */,
+				4A28ADCE1AD65AF600DF9A70 /* QBlock.h */,
+				4A28ADCF1AD65AF600DF9A70 /* RLBlock.cpp */,
+				4A28ADD01AD65AF600DF9A70 /* RLBlock.h */,
+				4A28ADD11AD65AF600DF9A70 /* RZBlock.cpp */,
+				4A28ADD21AD65AF600DF9A70 /* RZBlock.h */,
+				4A28ADD31AD65AF600DF9A70 /* TBlock.cpp */,
+				4A28ADD41AD65AF600DF9A70 /* TBlock.h */,
+				4A28ADD51AD65AF600DF9A70 /* ZBlock.cpp */,
+				4A28ADD61AD65AF600DF9A70 /* ZBlock.h */,
 			);
-			name = blocks;
+			name = Blocks;
 			sourceTree = "<group>";
 		};
-		4A47ACB01AD4C6030058D255 /* TetrisBlocks */ = {
+		4A28ADE51AD65B0300DF9A70 /* TetrisBlocks */ = {
 			isa = PBXGroup;
 			children = (
-				4A2743A91AD4D188004E2338 /* blocks */,
-				4A2743AA1AD4D1BD004E2338 /* Block.cpp */,
-				4A2743AB1AD4D1BD004E2338 /* Block.h */,
-				4A2743AE1AD4D1CF004E2338 /* BlockNode.cpp */,
-				4A2743AF1AD4D1CF004E2338 /* BlockNode.h */,
+				4A28ADC81AD65ABD00DF9A70 /* Blocks */,
+				4A28ADE61AD65B2000DF9A70 /* Block.cpp */,
+				4A28ADE71AD65B2000DF9A70 /* Block.h */,
+				4A28ADE81AD65B2000DF9A70 /* BlockNode.cpp */,
+				4A28ADE91AD65B2000DF9A70 /* BlockNode.h */,
 			);
 			name = TetrisBlocks;
 			sourceTree = "<group>";
@@ -501,21 +501,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
-				4A47ACC31AD4C7810058D255 /* RLBlock.cpp in Sources */,
-				4A47ACB71AD4C6C70058D255 /* QBlock.cpp in Sources */,
-				4A47ACBB1AD4C73C0058D255 /* LBlock.cpp in Sources */,
-				4A47ACBF1AD4C7550058D255 /* IBlock.cpp in Sources */,
-				4AAD1C3B1AA8296C002A1D2B /* MenuScene.cpp in Sources */,
-				4A47ACC71AD4C79E0058D255 /* ZBlock.cpp in Sources */,
+				4A28ADE11AD65AF600DF9A70 /* TBlock.cpp in Sources */,
+				4A28ADDB1AD65AF600DF9A70 /* QBlock.cpp in Sources */,
+				4A28ADD91AD65AF600DF9A70 /* LBlock.cpp in Sources */,
+				4A28ADC41AD65A5100DF9A70 /* MenuScene.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
-				4A2743AC1AD4D1BD004E2338 /* Block.cpp in Sources */,
-				4AAD1C3F1AA834BF002A1D2B /* GameScene.cpp in Sources */,
-				4A47ACCF1AD4C7CD0058D255 /* TBlock.cpp in Sources */,
-				4A47ACCB1AD4C7B40058D255 /* RZBlock.cpp in Sources */,
+				4A28ADC61AD65A5100DF9A70 /* GameScene.cpp in Sources */,
+				4A28ADDF1AD65AF600DF9A70 /* RZBlock.cpp in Sources */,
+				4A28ADEA1AD65B2000DF9A70 /* Block.cpp in Sources */,
+				4A28ADDD1AD65AF600DF9A70 /* RLBlock.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
-				4A2743B01AD4D1CF004E2338 /* BlockNode.cpp in Sources */,
+				4A28ADE31AD65AF600DF9A70 /* ZBlock.cpp in Sources */,
+				4A28ADD71AD65AF600DF9A70 /* IBlock.cpp in Sources */,
+				4A28ADEC1AD65B2000DF9A70 /* BlockNode.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,20 +523,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AAD1C401AA834BF002A1D2B /* GameScene.cpp in Sources */,
-				4A47ACD01AD4C7CD0058D255 /* TBlock.cpp in Sources */,
-				4A47ACC41AD4C7810058D255 /* RLBlock.cpp in Sources */,
+				4A28ADC71AD65A5100DF9A70 /* GameScene.cpp in Sources */,
+				4A28ADE01AD65AF600DF9A70 /* RZBlock.cpp in Sources */,
+				4A28ADDE1AD65AF600DF9A70 /* RLBlock.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
-				4A47ACBC1AD4C73C0058D255 /* LBlock.cpp in Sources */,
-				4AAD1C3C1AA8296C002A1D2B /* MenuScene.cpp in Sources */,
-				4A47ACC01AD4C7550058D255 /* IBlock.cpp in Sources */,
-				4A47ACCC1AD4C7B40058D255 /* RZBlock.cpp in Sources */,
+				4A28ADC51AD65A5100DF9A70 /* MenuScene.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
-				4A2743B11AD4D1CF004E2338 /* BlockNode.cpp in Sources */,
-				4A47ACC81AD4C79E0058D255 /* ZBlock.cpp in Sources */,
-				4A2743AD1AD4D1BD004E2338 /* Block.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
-				4A47ACB81AD4C6C70058D255 /* QBlock.cpp in Sources */,
+				4A28ADD81AD65AF600DF9A70 /* IBlock.cpp in Sources */,
+				4A28ADE41AD65AF600DF9A70 /* ZBlock.cpp in Sources */,
+				4A28ADED1AD65B2000DF9A70 /* BlockNode.cpp in Sources */,
+				4A28ADDA1AD65AF600DF9A70 /* LBlock.cpp in Sources */,
+				4A28ADEB1AD65B2000DF9A70 /* Block.cpp in Sources */,
+				4A28ADDC1AD65AF600DF9A70 /* QBlock.cpp in Sources */,
+				4A28ADE21AD65AF600DF9A70 /* TBlock.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,9 +14,6 @@ public:
 
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
-    
-    static void buttonCallBack (Ref * ref);
-    
 };
 
 #endif // __HELLOWORLD_SCENE_H__
