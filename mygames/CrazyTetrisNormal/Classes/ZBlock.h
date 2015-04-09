@@ -10,9 +10,9 @@
 #define __CrazyTetris__ZBlock__
 //Z型方块
 #include <stdio.h>
-#include "Block.h"
+#include "BaseBlock.h"
 
-class ZBlock : public Block
+class ZBlock : public BaseBlock
 {
     
 public:

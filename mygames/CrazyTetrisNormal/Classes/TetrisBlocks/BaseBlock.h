@@ -15,13 +15,13 @@
 
 USING_NS_CC;
 
-class Block : public Sprite{
+class BaseBlock : public Sprite{
     
 private:
     BlockNode nodes[4][4];
 public:
     virtual bool init();
-    CREATE_FUNC(Block);
+    CREATE_FUNC(BaseBlock);
 };
 
 #endif /* defined(__CrazyTetris__Block__) */

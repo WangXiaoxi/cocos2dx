@@ -10,9 +10,10 @@
 #define __CrazyTetris__QBlock__
 //田字形，正方形方块
 #include <stdio.h>
-#include "Block.h"
+#include "BaseBlock.h"
 
-class QBlock : Block {
+class QBlock : BaseBlock
+{
     
 public:
     

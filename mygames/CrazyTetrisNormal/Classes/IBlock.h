@@ -10,9 +10,9 @@
 #define __CrazyTetris__IBlock__
 //I型方块，| -- 直线型
 #include <stdio.h>
-#include "Block.h"
+#include "BaseBlock.h"
 
-class IBlock : public Block
+class IBlock : public BaseBlock
 {
     
 public:

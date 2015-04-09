@@ -6,9 +6,9 @@
 //
 //
 
-#include "Block.h"
+#include "BaseBlock.h"
 
-bool Block::init()
+bool BaseBlock::init()
 {
     
     

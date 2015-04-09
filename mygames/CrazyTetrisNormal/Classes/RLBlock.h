@@ -10,9 +10,9 @@
 #define __CrazyTetris__RLBlock__
 //反L型方块
 #include <stdio.h>
-#include "Block.h"
+#include "BaseBlock.h"
 
-class RLBlock : public Block
+class RLBlock : public BaseBlock
 {
     
 public:
