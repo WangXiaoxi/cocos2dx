@@ -23,12 +23,12 @@
             <FileData Type="Normal" Path="bg.png" />
           </NodeObjectData>
           <NodeObjectData Name="gameLayer" ActionTag="-1611196661" FrameEvent="" Tag="10" LeftMargin="33.3434" RightMargin="206.6566" TopMargin="94.8770" BottomMargin="241.1230" TouchEnable="True" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
-            <Position X="233.3434" Y="641.1230" />
+            <Position X="33.3434" Y="241.1230" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
-            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <AnchorPoint />
             <CColor A="255" R="144" G="91" B="70" />
             <Size X="400.0000" Y="800.0000" />
-            <PrePosition X="0.3646" Y="0.5644" />
+            <PrePosition X="0.0521" Y="0.2123" />
             <PreSize X="0.6250" Y="0.7042" />
             <SingleColor A="255" R="150" G="200" B="255" />
             <FirstColor A="255" R="150" G="200" B="255" />

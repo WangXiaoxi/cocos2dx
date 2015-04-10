@@ -87,12 +87,16 @@ bool GameScene::init()
 //    drawLines->setPosition(nextBlockLayer->getAnchorPoint());
     
     
-    auto iBlock = IBlock::create();
+    currentBlock = IBlock::create();
 //    iBlock->setColor(Color3B::RED);
-    iBlock->setPosition(Vec2(gameViewLayer->getContentSize().width/2, gameViewLayer->getContentSize().height/2));
-    gameViewLayer->addChild(iBlock);
+//    currentBlock->setPosition(Vec2(gameViewLayer->getContentSize().width/2, gameViewLayer->getContentSize().height+currentBlock->getContentSize().height/2));
+    currentBlock->setPosition(Vec2::ZERO);
+    gameViewLayer->addChild(currentBlock);
+    
+    log("WIDTH:%f,HEIGHT:%f",gameViewLayer->getContentSize().width,gameViewLayer->getContentSize().height);
+    
         //定义按钮监听器
-    ui::Widget::ccWidgetClickCallback btnClickCallback = [this,iBlock](Ref * ref)
+    ui::Widget::ccWidgetClickCallback btnClickCallback = [this](Ref * ref)
         {
             Button * btn = static_cast<Button*>(ref);
             switch (btn->getTag()) {
@@ -106,17 +110,19 @@ bool GameScene::init()
                     this->gameBack();
                     break;
                 case LEFT:
-                    
+                    currentBlock->moveLeft();
                     break;
                 case RIGHT:
-                   
+                    currentBlock->moveRight();
                     break;
                 case ROTATE:
-                    iBlock->setRotation90();
+                    currentBlock->setRotation90();
                     break;
                 case DOWN:
+                    currentBlock->moveDown();
                     break;
                 case DOWN_IMD:
+                    currentBlock->moveDownIMD();
                     break;
                     
                 default:
@@ -133,6 +139,8 @@ bool GameScene::init()
     INIT_BUTTON(btnDown, rootNode, "downButton", DOWN, btnClickCallback);
     INIT_BUTTON(btnDownIMD, rootNode, "downButtonIMD", DOWN_IMD, btnClickCallback);
 
+    scheduleUpdate();
+    
     return true;
 }
 
@@ -152,4 +160,15 @@ void GameScene::gameBack()
     Director::getInstance()->popScene();
 }
 
-
+void GameScene::update(float delta)
+{
+    Vec2 vec1 = gameViewLayer->convertToNodeSpace(((IBlock*)currentBlock)->blockNode1->getPosition());
+    Vec2 vec2 = gameViewLayer->convertToNodeSpaceAR(((IBlock*)currentBlock)->blockNode1->getPosition());
+    Vec2 vec3 = gameViewLayer->convertToWorldSpace(((IBlock*)currentBlock)->blockNode1->getPosition());
+    Vec2 vec4 = gameViewLayer->convertToWorldSpaceAR(((IBlock*)currentBlock)->blockNode1->getPosition());
+    
+    log("node1.x:%f,node1.y%f",vec1.x,vec1.y);
+    log("ARnode1.x:%f,node1.y%f",vec2.x,vec2.y);
+    log("Worldnode1.x:%f,node1.y%f",vec3.x,vec3.y);
+    log("WorldARnode1.x:%f,node1.y%f",vec4.x,vec4.y);
+}

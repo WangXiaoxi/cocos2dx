@@ -11,7 +11,7 @@ bool IBlock::init()
 {
 
     BaseBlock::init();
-    BlockNode * blockNode1 = BlockNode::create();
+    blockNode1 = BlockNode::create();
     blockNode1->initWithArgs(Color4F::RED);
     blockNode1->setPosition(Vec2(NODE_WIDTH, 0));
     addChild(blockNode1);
@@ -31,8 +31,8 @@ bool IBlock::init()
     blockNode4->setPosition(Vec2(NODE_WIDTH, NODE_HEIGHT*3));
     addChild(blockNode4);
     
-    
-    setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+    setColor(Color3B::RED);
+    setAnchorPoint(Vec2::ZERO);
     
     log("Size/ width:%f,height:%f",getContentSize().width,getContentSize().height);
     log("anX:%f,anY:%f",getAnchorPoint().x,getAnchorPoint().y);

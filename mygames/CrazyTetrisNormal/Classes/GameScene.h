@@ -12,7 +12,7 @@
 #include <cocos2d.h>
 #include <CocosGUI.h>
 
-#include "Block.h"
+#include "BaseBlock.h"
 
 #include "MacroData.h"
 
@@ -23,6 +23,9 @@ using namespace cocos2d::ui;
 
 class GameScene : public Layer {
 
+private:
+    BaseBlock * currentBlock;//当前操作方块
+    BaseBlock * nextBlock;//下一个方块
 private:
     //方块出生位置
     Vec2  bornPosition;
@@ -40,14 +43,13 @@ private:
     Button * btnDown;           //加速下落
     Button * btnDownIMD;        //立即下落
     
-    
     Layer * gameViewLayer; //游戏区域Layer
     
     Layer * nextBlockLayer; //待下落区域Layer
     
     
 public:
-    
+    void update(float);
     void gamePause();
     void gameStart();
     void gameBack();

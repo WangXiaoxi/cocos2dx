@@ -16,6 +16,7 @@ class IBlock : public BaseBlock
 {
 
 public:
+    BlockNode * blockNode1;
     virtual bool init();
     void setRotation90();
     CREATE_FUNC(IBlock);

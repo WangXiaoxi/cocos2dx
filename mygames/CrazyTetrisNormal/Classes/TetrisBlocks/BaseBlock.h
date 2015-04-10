@@ -27,6 +27,17 @@ public:
     void setRotation90();
     CREATE_FUNC(BaseBlock);
     
+    //自动更新方法
+    virtual void updateBlock(float dt);
+    //向左移动
+    virtual void moveLeft();
+    //向右移动
+    virtual void moveRight();
+    //向下移动
+    virtual void moveDown();
+    //立即下落
+    virtual void moveDownIMD();
+    
     
 };
 
