@@ -18,15 +18,22 @@ USING_NS_CC;
 class BaseBlock : public Node
 {
 protected:
+    //记录旋转的角度
     int rotateTimes=0;
 protected:
     Sprite * sprite;
-    BlockNode nodes[4][4];
+    Vector<BlockNode*> *nodes;
 public:
     virtual bool init();
     void setRotation90();
     CREATE_FUNC(BaseBlock);
+    //根据二位矩阵生成矩阵所对应的Block
+    bool initWithMatris(int[4][4]);
+    virtual Point getWorldSpace();
     
+    
+/*操作方法*/
+public:
     //自动更新方法
     virtual void updateBlock(float dt);
     //向左移动

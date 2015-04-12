@@ -11,17 +11,24 @@
 bool BaseBlock::init()
 {
     setContentSize(Size(NODE_WIDTH*4,NODE_HEIGHT*4));
+    nodes = new Vector<BlockNode*>;
+    
+    for (int i = 0; i<4; i++)
+    {
+        BlockNode * node = BlockNode::create();
+        node->initWithArgs(Color4F::RED);
+        nodes->pushBack(node);
+    }
     
 //    schedule(schedule_selector(BaseBlock::updateBlock), 1);
-    sprite = Sprite::create();
-    sprite->setColor(Color3B::RED);
-    sprite->setContentSize(Size(NODE_WIDTH*4,NODE_HEIGHT*4));
-    sprite->setTextureRect(Rect(0, 0, NODE_WIDTH*4, NODE_HEIGHT*4));
-    sprite->setAnchorPoint(Vec2::ZERO);
-    sprite->setPosition(Vec2::ZERO);
-    addChild(sprite);
+    
     return true;
 }
+
+//bool BaseBlock::initWithMatris(int [4][4] *matris)
+//{
+//    return true;
+//}
 
 void BaseBlock::setRotation90()
 {
@@ -52,4 +59,9 @@ void BaseBlock::moveDown()
 void BaseBlock::moveDownIMD()
 {
     setPosition(getPosition()+Point(0,NODE_HEIGHT));
+}
+
+Point BaseBlock::getWorldSpace()
+{
+    return Point(0,0);
 }

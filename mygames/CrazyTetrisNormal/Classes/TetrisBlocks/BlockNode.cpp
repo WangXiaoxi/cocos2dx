@@ -22,7 +22,7 @@ bool BlockNode::initWithArgs(cocos2d::Color4F color)
     dn = DrawNode::create();
     log("BlockNode ::: method initWithArgs2 is called!");
     dn->drawRect(Vec2::ZERO, Vec2(NODE_WIDTH, NODE_HEIGHT), color);
-    dn->setAnchorPoint(Vec2::ZERO);
+//    dn->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     addChild(dn);
     return true;
 }
@@ -33,6 +33,15 @@ bool BlockNode::init()
     isExist = true;
     log("BlockNode :::: method init is called!");
     setContentSize(Size(NODE_WIDTH, NODE_HEIGHT));
-
+    setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     return true;
+}
+bool BlockNode::setNodeColor(Color3B color)
+{
+    if (dn)
+    {
+        dn->setColor(color);
+        return true;
+    }
+    return false;
 }

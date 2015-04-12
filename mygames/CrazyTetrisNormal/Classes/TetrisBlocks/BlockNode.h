@@ -27,7 +27,7 @@ public:
     virtual bool init();
     virtual bool initWithArgs(std::string filename);
     virtual bool initWithArgs(Color4F color);
-    
+    bool setNodeColor(Color3B color);
     CREATE_FUNC(BlockNode);
 };
 

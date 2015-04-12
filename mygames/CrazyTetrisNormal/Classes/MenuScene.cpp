@@ -12,6 +12,7 @@
 
 #include "GameScene.h"
 
+
 using namespace cocos2d::ui;
 
 
@@ -31,6 +32,7 @@ bool MenuScene::init()
     {
         return false;
     }
+    
     
     auto rootNode = CSLoader::createNode("MenuScene.csb");
     

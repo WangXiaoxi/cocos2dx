@@ -41,6 +41,7 @@ Scene * GameScene::createScene()
     return scene;
 }
 
+//画出背景上的灰色格子
 void drawGameLayerLines(Layer * gameLayer)
 {
     DrawNode * drawNode = DrawNode::create();
@@ -81,17 +82,14 @@ bool GameScene::init()
     node->initWithArgs("1.png");
     nextBlockLayer->addChild(node);
     node->setPosition(Vec2(nextBlockLayer->getContentSize().width/2, nextBlockLayer->getContentSize().height/2));
-//    auto drawLines = DrawNode::create();
-//    drawLines->drawRect(Vec2(0, 0), Vec2(40, 40), Color4F::RED);
-//    nextBlockLayer->addChild(drawLines);
-//    drawLines->setPosition(nextBlockLayer->getAnchorPoint());
     
     
     currentBlock = IBlock::create();
-//    iBlock->setColor(Color3B::RED);
-//    currentBlock->setPosition(Vec2(gameViewLayer->getContentSize().width/2, gameViewLayer->getContentSize().height+currentBlock->getContentSize().height/2));
     currentBlock->setPosition(Vec2::ZERO);
     gameViewLayer->addChild(currentBlock);
+    
+    Vec2 vec1 = gameViewLayer->convertToNodeSpace(currentBlock->getWorldSpace());
+    log("node1.x:%f,node1.y%f",vec1.x,vec1.y);
     
     log("WIDTH:%f,HEIGHT:%f",gameViewLayer->getContentSize().width,gameViewLayer->getContentSize().height);
     
@@ -162,13 +160,6 @@ void GameScene::gameBack()
 
 void GameScene::update(float delta)
 {
-    Vec2 vec1 = gameViewLayer->convertToNodeSpace(((IBlock*)currentBlock)->blockNode1->getPosition());
-    Vec2 vec2 = gameViewLayer->convertToNodeSpaceAR(((IBlock*)currentBlock)->blockNode1->getPosition());
-    Vec2 vec3 = gameViewLayer->convertToWorldSpace(((IBlock*)currentBlock)->blockNode1->getPosition());
-    Vec2 vec4 = gameViewLayer->convertToWorldSpaceAR(((IBlock*)currentBlock)->blockNode1->getPosition());
-    
+    Vec2 vec1 = gameViewLayer->convertToNodeSpace(currentBlock->getWorldSpace());
     log("node1.x:%f,node1.y%f",vec1.x,vec1.y);
-    log("ARnode1.x:%f,node1.y%f",vec2.x,vec2.y);
-    log("Worldnode1.x:%f,node1.y%f",vec3.x,vec3.y);
-    log("WorldARnode1.x:%f,node1.y%f",vec4.x,vec4.y);
 }
