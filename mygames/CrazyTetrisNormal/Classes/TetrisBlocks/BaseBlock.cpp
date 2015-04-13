@@ -25,10 +25,20 @@ bool BaseBlock::init()
     return true;
 }
 
-//bool BaseBlock::initWithMatris(int [4][4] *matris)
-//{
-//    return true;
-//}
+bool BaseBlock::initWithMatris(int matris[][4])
+{
+    for (int i = 0; i < 4; i ++)
+    {
+        for (int j = 0 ; j < 4 ; j ++)
+        {
+            if (matris[i][j]==1)
+            {
+                
+            }
+        }
+    }
+    return true;
+}
 
 void BaseBlock::setRotation90()
 {

@@ -28,7 +28,7 @@ public:
     void setRotation90();
     CREATE_FUNC(BaseBlock);
     //根据二位矩阵生成矩阵所对应的Block
-    bool initWithMatris(int[4][4]);
+    bool initWithMatris(int[][4]);
     virtual Point getWorldSpace();
     
     
