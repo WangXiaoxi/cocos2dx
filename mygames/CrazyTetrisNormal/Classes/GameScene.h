@@ -26,9 +26,15 @@ class GameScene : public Layer {
 private:
     BaseBlock * currentBlock;//当前操作方块
     BaseBlock * nextBlock;//下一个方块
+    
+    Vector<BlockNode*> *fallenNodes; // 已经落下的方块
 private:
+    //当前方块的位置
+    Vec2 currentBlockPositon;
     //方块出生位置
-    Vec2  bornPosition;
+    Vec2 bornPosition;
+    //下一个方块的的位置
+    Vec2 nextBlockPosition;
     //可视区域大小
     Size visibleSize;
     //游戏暂停状态
@@ -47,11 +53,22 @@ private:
     
     Layer * nextBlockLayer; //待下落区域Layer
     
+    //游戏逻辑方法
+public:
+    //添加一个新的方块
+    void addNewBlock();
+    //碰撞检测
+    void blockCollide();
+    //消除行
+    void deleteCompleteLine();
+    //检测是否游戏结束
+    void isGameOver();
     
 public:
+    void gameStart();
     void update(float);
     void gamePause();
-    void gameStart();
+    void gameReStart();
     void gameBack();
     
     //按钮枚举类型

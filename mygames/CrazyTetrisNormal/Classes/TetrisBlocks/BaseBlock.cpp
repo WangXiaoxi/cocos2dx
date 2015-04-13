@@ -12,20 +12,46 @@ bool BaseBlock::init()
 {
     setContentSize(Size(NODE_WIDTH*4,NODE_HEIGHT*4));
     nodes = new Vector<BlockNode*>;
-    
     for (int i = 0; i<4; i++)
     {
         BlockNode * node = BlockNode::create();
-        node->initWithArgs(Color4F::RED);
         nodes->pushBack(node);
     }
-    
-//    schedule(schedule_selector(BaseBlock::updateBlock), 1);
-    
     return true;
 }
 
-bool BaseBlock::initWithMatris(int matris[][4])
+bool BaseBlock::initWithColor(Color4F color)
+{
+    for(auto it = nodes->begin();it!=nodes->end();it++)
+    {
+        (*it)->initWithArgs(color);
+    }
+//    schedule(schedule_selector(BaseBlock::updateBlock), 1);
+    return true;
+}
+
+bool BaseBlock::initWithFile(std::string &filename)
+{
+    for(auto it = nodes->begin();it!=nodes->end();it++)
+    {
+        
+    }
+    return true;
+}
+
+
+void BaseBlock::setBlockSchedule(float dt)
+{
+    if (dt>0)
+    {
+        schedule(schedule_selector(BaseBlock::updateBlock), dt);
+    }else{
+        unschedule(schedule_selector(BaseBlock::updateBlock));
+    }
+}
+
+//此方法已废弃
+CC_DEPRECATED_ATTRIBUTE bool BaseBlock::initWithMatris(int matris[][4])
 {
     for (int i = 0; i < 4; i ++)
     {
@@ -38,6 +64,11 @@ bool BaseBlock::initWithMatris(int matris[][4])
         }
     }
     return true;
+}
+
+Vector<BlockNode*> * BaseBlock::getNodes()
+{
+    return nodes;
 }
 
 void BaseBlock::setRotation90()
@@ -71,7 +102,7 @@ void BaseBlock::moveDownIMD()
     setPosition(getPosition()+Point(0,NODE_HEIGHT));
 }
 
-Point BaseBlock::getWorldSpace()
+Point BaseBlock::getWorldSpace(BlockNode*node)
 {
-    return Point(0,0);
+    return convertToWorldSpace(node->getPosition());
 }

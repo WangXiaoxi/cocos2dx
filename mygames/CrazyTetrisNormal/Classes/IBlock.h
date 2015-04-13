@@ -12,13 +12,14 @@
 #include <stdio.h>
 #include "BaseBlock.h"
 
+
 class IBlock : public BaseBlock
 {
 
 public:
     BlockNode * blockNode1;
     virtual bool init();
-    virtual Point getWorldSpace();
+    virtual Point getWorldSpace(BlockNode*);
     void setRotation90();
     CREATE_FUNC(IBlock);
 };

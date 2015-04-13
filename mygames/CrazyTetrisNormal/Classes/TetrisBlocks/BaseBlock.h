@@ -25,15 +25,20 @@ protected:
     Vector<BlockNode*> *nodes;
 public:
     virtual bool init();
+    virtual bool initWithColor(Color4F);
+    virtual bool initWithFile(std::string &filename);
     void setRotation90();
     CREATE_FUNC(BaseBlock);
     //根据二位矩阵生成矩阵所对应的Block
-    bool initWithMatris(int[][4]);
-    virtual Point getWorldSpace();
-    
+    CC_DEPRECATED_ATTRIBUTE bool initWithMatris(int[][4]);
+    virtual Point getWorldSpace(BlockNode*);
+
+public:
+    Vector<BlockNode*> * getNodes();
     
 /*操作方法*/
 public:
+    virtual void setBlockSchedule(float);
     //自动更新方法
     virtual void updateBlock(float dt);
     //向左移动

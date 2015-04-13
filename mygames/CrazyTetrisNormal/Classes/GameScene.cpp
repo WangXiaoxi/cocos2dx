@@ -63,7 +63,7 @@ bool GameScene::init()
     {
         return false;
     }
-    
+    fallenNodes = new Vector<BlockNode*>;
     //游戏数据初始化
     visibleSize = Director::getInstance()->getVisibleSize();
     //添加通过CocosStudio制作的游戏场景到当前Scene中
@@ -73,26 +73,10 @@ bool GameScene::init()
     //初始化游戏场景，获取游戏区域和下一块方块的的区域
     gameViewLayer = static_cast<Layer*>(rootNode->getChildByName("gameLayer"));
     nextBlockLayer = static_cast<Layer*>(rootNode->getChildByName("nextLayer"));
-    
     drawGameLayerLines(gameViewLayer);
-    
-    log("%f",gameViewLayer->getContentSize().width);
-    
-    BlockNode * node = BlockNode::create();
-    node->initWithArgs("1.png");
-    nextBlockLayer->addChild(node);
-    node->setPosition(Vec2(nextBlockLayer->getContentSize().width/2, nextBlockLayer->getContentSize().height/2));
-    
-    
-    currentBlock = IBlock::create();
-    currentBlock->setPosition(Vec2::ZERO);
-    gameViewLayer->addChild(currentBlock);
-    
-    Vec2 vec1 = gameViewLayer->convertToNodeSpace(currentBlock->getWorldSpace());
-    log("node1.x:%f,node1.y%f",vec1.x,vec1.y);
-    
-    log("WIDTH:%f,HEIGHT:%f",gameViewLayer->getContentSize().width,gameViewLayer->getContentSize().height);
-    
+    nextBlockPosition = Vec2(nextBlockLayer->getContentSize().width/2, nextBlockLayer->getContentSize().height/2);
+    bornPosition = Vec2(GAME_VIEW_WIDTH/2, GAME_VIEW_HEIGHT+NODE_HEIGHT);
+
         //定义按钮监听器
     ui::Widget::ccWidgetClickCallback btnClickCallback = [this](Ref * ref)
         {
@@ -139,7 +123,88 @@ bool GameScene::init()
 
     scheduleUpdate();
     
+    gameStart();
+    
     return true;
+}
+
+void GameScene::addNewBlock()
+{
+    
+//    currentBlock = IBlock::create();
+//    currentBlock->setPosition(bornPosition);
+//    currentBlock->setBlockSchedule(1);
+//    gameViewLayer->addChild(currentBlock);
+    
+    currentBlock->removeFromParent();
+    //先将下一块方块从待转区移除
+//    nextBlock->removeFromParent();
+//    nextBlockLayer->removeAllChildren();
+    //将方块赋值给当前的方块指针
+    currentBlock = nullptr;
+    currentBlock = nextBlock;
+    gameViewLayer->addChild(currentBlock);
+    currentBlock->setPosition(bornPosition);
+    currentBlock->setScale(1);
+    currentBlock->setBlockSchedule(1);
+//
+//    nextBlock = IBlock::create();
+//    nextBlock->setPosition(nextBlockPosition);
+//    nextBlock->setScale(0.7);
+//    nextBlockLayer->addChild(nextBlock);
+}
+
+void GameScene::blockCollide()
+{
+   auto nodes = currentBlock->getNodes();
+//    for (auto it = nodes->begin(); it!=nodes->end(); it++)
+//    {
+//        auto box = gameViewLayer->getBoundingBox();
+//        log("Ax1:%f,x2:%f,y1:%f,y2:%f",box.getMinX(),box.getMaxX(),box.getMinY(),box.getMaxY());
+        
+//        box = currentBlock->getNodes()->at(0)->getBoundingBox();
+//        log("Bx1:%f,x2:%f,y1:%f,y2:%f",box.getMinX(),box.getMaxX(),box.getMinY(),box.getMaxY());
+        auto it = nodes->begin();
+        if (gameViewLayer->getBoundingBox().containsPoint(currentBlock->getWorldSpace((*it))))
+        {
+//            currentBlock->setBlockSchedule(0);
+            log("true***********");
+        }else{
+            log("false-----------");
+            currentBlock->setBlockSchedule(0);
+            addNewBlock();
+        }
+//    auto it = nodes->begin();
+//    Vec2 vec1 = currentBlock->getWorldSpace((*it));
+//        log("node1.x:%f,node1.y%f",vec1.x,vec1.y);
+//
+//        log("blockCollide is called");
+//    }
+}
+
+void GameScene::deleteCompleteLine()
+{
+    
+}
+
+void GameScene::isGameOver()
+{
+    
+}
+
+
+void GameScene::gameStart()
+{
+    nextBlock = IBlock::create();
+    nextBlock->setPosition(nextBlockPosition);
+    nextBlock->setScale(0.7);
+    nextBlockLayer->addChild(nextBlock);
+    
+    
+    currentBlock = IBlock::create();
+    currentBlock->setPosition(bornPosition);
+    gameViewLayer->addChild(currentBlock);
+    currentBlock->setBlockSchedule(1);
 }
 
 void GameScene::gamePause()
@@ -148,9 +213,8 @@ void GameScene::gamePause()
     Director::getInstance()->pause();
 //    world->getAllBodies()
 }
-void GameScene::gameStart()
+void GameScene::gameReStart()
 {
-    log("start");
     Director::getInstance()->resume();
 }
 void GameScene::gameBack()
@@ -160,6 +224,10 @@ void GameScene::gameBack()
 
 void GameScene::update(float delta)
 {
-    Vec2 vec1 = gameViewLayer->convertToNodeSpace(currentBlock->getWorldSpace());
-    log("node1.x:%f,node1.y%f",vec1.x,vec1.y);
+    auto nodes = currentBlock->getNodes();
+//    Vec2 vec1 = gameViewLayer->convertToNodeSpace(currentBlock->getWorldSpace(nodes->at(0)));
+//    log("node1.x:%f,node1.y%f",vec1.x,vec1.y);
+    
+    blockCollide();
+    
 }
