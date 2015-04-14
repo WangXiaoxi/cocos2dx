@@ -15,6 +15,10 @@
 
 USING_NS_CC;
 
+#define INIT_NODES_POSITION_BY_TAG(__TAG__,__X__,__Y__)\
+nodes->at(__TAG__)->setPosition(Vec2(__X__,__Y__));\
+addChild(nodes->at(__TAG__));
+
 class BaseBlock : public Node
 {
 protected:
@@ -27,7 +31,7 @@ public:
     virtual bool init();
     virtual bool initWithColor(Color4F);
     virtual bool initWithFile(std::string &filename);
-    void setRotation90();
+    virtual void setRotation90();
     CREATE_FUNC(BaseBlock);
     //根据二位矩阵生成矩阵所对应的Block
     CC_DEPRECATED_ATTRIBUTE bool initWithMatris(int[][4]);

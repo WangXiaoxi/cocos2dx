@@ -131,22 +131,22 @@ bool GameScene::init()
 void GameScene::addNewBlock()
 {
     
-//    currentBlock = IBlock::create();
-//    currentBlock->setPosition(bornPosition);
-//    currentBlock->setBlockSchedule(1);
-//    gameViewLayer->addChild(currentBlock);
+    currentBlock = IBlock::create();
+    currentBlock->setPosition(bornPosition);
+    currentBlock->setBlockSchedule(1);
+    gameViewLayer->addChild(currentBlock);
     
-    currentBlock->removeFromParent();
+//    currentBlock->removeFromParent();
     //先将下一块方块从待转区移除
 //    nextBlock->removeFromParent();
 //    nextBlockLayer->removeAllChildren();
     //将方块赋值给当前的方块指针
-    currentBlock = nullptr;
-    currentBlock = nextBlock;
-    gameViewLayer->addChild(currentBlock);
-    currentBlock->setPosition(bornPosition);
-    currentBlock->setScale(1);
-    currentBlock->setBlockSchedule(1);
+//    currentBlock = nullptr;
+//    currentBlock = nextBlock;
+//    gameViewLayer->addChild(currentBlock);
+//    currentBlock->setPosition(bornPosition);
+//    currentBlock->setScale(1);
+//    currentBlock->setBlockSchedule(1);
 //
 //    nextBlock = IBlock::create();
 //    nextBlock->setPosition(nextBlockPosition);

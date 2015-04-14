@@ -15,6 +15,19 @@
 #define NODE_WIDTH GAME_VIEW_WIDTH/10
 #define NODE_HEIGHT NODE_WIDTH
 
+//#include <cocos2d.h>
+//USING_NS_CC;
+//auto IBLOCK_COLOR = Color4F::RED;
+//
+//auto LBLOCK_COLOR = Color4F::BLUE;
+//
+//auto RLBLOCK_COLOR = Color4F::GREEN;
+//
+//auto QBLOCK_COLOR = Color4F::YELLOW;
+//
+//auto ZBLOCK_COLOR = Color4F::ORANGE;
+//
+//auto RZBLOCK_COLOR = Color4F::MAGENTA;
 //
 ////直线形Block
 //int _I_BLOCK[4][4] = {  {0,1,0,0},

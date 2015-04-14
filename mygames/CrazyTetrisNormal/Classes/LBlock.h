@@ -14,9 +14,8 @@
 
 class LBlock : public BaseBlock
 {
-    
-    
 public:
+    virtual bool init();
     CREATE_FUNC(LBlock);
 };
 
