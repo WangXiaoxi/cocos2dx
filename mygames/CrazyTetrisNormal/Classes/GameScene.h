@@ -54,6 +54,10 @@ private:
     Layer * nextBlockLayer; //待下落区域Layer
     
     //游戏逻辑方法
+private:
+    bool canMoveLeft();
+    bool canMoveRight();
+    bool canMoveDown();
 public:
     //添加一个新的方块
     void addNewBlock();
@@ -62,8 +66,9 @@ public:
     //消除行
     void deleteCompleteLine();
     //检测是否游戏结束
-    void isGameOver();
-    
+    bool isGameOver();
+    //游戏界面外
+    virtual bool isOutofGameView();
 public:
     void gameStart();
     void update(float);
