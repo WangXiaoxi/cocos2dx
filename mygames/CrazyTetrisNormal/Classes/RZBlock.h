@@ -16,6 +16,9 @@ class RZBlock : public BaseBlock
 {
 
 public:
+    bool init();
     CREATE_FUNC(RZBlock);
+    Point getBornPosition();
+    void setRotation90();
 };
 #endif /* defined(__CrazyTetris__RZBlock__) */

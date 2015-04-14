@@ -19,6 +19,8 @@ class IBlock : public BaseBlock
 public:
     virtual bool init();
     CREATE_FUNC(IBlock);
+    Vec2 getBornPosition();
+    void setRotation90();
 };
 
 #endif /* defined(__CrazyTetris__IBlock__) */

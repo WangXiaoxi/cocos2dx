@@ -24,7 +24,10 @@ class BaseBlock : public Node
 protected:
     //记录旋转的角度
     int rotateTimes=0;
+    //记录是否被旋转过
+    bool isRotated = false;
 protected:
+    Vec2 bornPosition;
     Sprite * sprite;
     Vector<BlockNode*> *nodes;
 public:
@@ -35,11 +38,12 @@ public:
     CREATE_FUNC(BaseBlock);
     //根据二位矩阵生成矩阵所对应的Block
     CC_DEPRECATED_ATTRIBUTE bool initWithMatris(int[][4]);
-    virtual Point getWorldSpace(BlockNode*);
+    virtual Point getNodeWorldSpace(BlockNode*);
 
 public:
     Vector<BlockNode*> * getNodes();
-    
+    virtual void setBornPosition(Vec2);
+    virtual Vec2 getBornPosition();
 /*操作方法*/
 public:
     virtual void setBlockSchedule(float);

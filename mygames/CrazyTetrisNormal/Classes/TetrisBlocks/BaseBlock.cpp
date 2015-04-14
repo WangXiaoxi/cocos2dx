@@ -10,7 +10,9 @@
 
 bool BaseBlock::init()
 {
+    bornPosition = Vec2(GAME_VIEW_WIDTH/2, GAME_VIEW_HEIGHT+NODE_HEIGHT);
     setContentSize(Size(NODE_WIDTH*4,NODE_HEIGHT*4));
+    setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     nodes = new Vector<BlockNode*>;
     for (int i = 0; i<4; i++)
     {
@@ -71,6 +73,16 @@ Vector<BlockNode*> * BaseBlock::getNodes()
     return nodes;
 }
 
+void BaseBlock::setBornPosition(Vec2 position)
+{
+    bornPosition = position;
+}
+
+Vec2 BaseBlock::getBornPosition()
+{
+    return Vec2(GAME_VIEW_WIDTH/2, GAME_VIEW_HEIGHT+NODE_HEIGHT);
+}
+
 void BaseBlock::setRotation90()
 {
     rotateTimes++;
@@ -102,7 +114,7 @@ void BaseBlock::moveDownIMD()
     setPosition(getPosition()+Point(0,NODE_HEIGHT));
 }
 
-Point BaseBlock::getWorldSpace(BlockNode*node)
+Point BaseBlock::getNodeWorldSpace(BlockNode*node)
 {
     return convertToWorldSpace(node->getPosition());
 }

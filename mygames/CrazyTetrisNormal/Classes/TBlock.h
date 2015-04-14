@@ -16,7 +16,8 @@ class TBlock : public BaseBlock
 {
     
 public:
+    bool init();
     CREATE_FUNC(TBlock);
-    
+    virtual Vec2 getBornPosition();
 };
 #endif /* defined(__CrazyTetris__TBlock__) */

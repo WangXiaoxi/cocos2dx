@@ -22,7 +22,6 @@ bool BlockNode::initWithArgs(cocos2d::Color4F color)
     dn = DrawNode::create();
 //    log("BlockNode ::: method initWithArgs2 is called!");
     dn->drawRect(Vec2::ZERO, Vec2(NODE_WIDTH, NODE_HEIGHT), color);
-//    dn->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
     addChild(dn);
     return true;
 }

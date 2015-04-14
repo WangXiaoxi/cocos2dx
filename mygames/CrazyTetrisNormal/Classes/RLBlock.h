@@ -16,8 +16,8 @@ class RLBlock : public BaseBlock
 {
     
 public:
+    bool init();
     CREATE_FUNC(RLBlock);
-    
 };
 
 #endif /* defined(__CrazyTetris__RLBlock__) */

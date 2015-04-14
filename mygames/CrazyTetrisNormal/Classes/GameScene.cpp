@@ -13,6 +13,12 @@
 /**************************************/
 #include "BlockNode.h"
 #include "IBlock.h"
+#include "LBlock.h"
+#include "RLBlock.h"
+#include "QBlock.h"
+#include "ZBlock.h"
+#include "RZBlock.h"
+#include "TBlock.h"
 /**************************************/
 
 #define INIT_BUTTON(__VAR__,__ROOT__,__NAME__,__TAG__,__CLICK_CALLBACK__) \
@@ -131,7 +137,7 @@ bool GameScene::init()
 void GameScene::addNewBlock()
 {
     
-    currentBlock = IBlock::create();
+    currentBlock = LBlock::create();
     currentBlock->setPosition(bornPosition);
     currentBlock->setBlockSchedule(1);
     gameViewLayer->addChild(currentBlock);
@@ -156,24 +162,29 @@ void GameScene::addNewBlock()
 
 void GameScene::blockCollide()
 {
-   auto nodes = currentBlock->getNodes();
+    auto nodes = currentBlock->getNodes();
+    
+    
+    
 //    for (auto it = nodes->begin(); it!=nodes->end(); it++)
 //    {
 //        auto box = gameViewLayer->getBoundingBox();
 //        log("Ax1:%f,x2:%f,y1:%f,y2:%f",box.getMinX(),box.getMaxX(),box.getMinY(),box.getMaxY());
-        
+    
 //        box = currentBlock->getNodes()->at(0)->getBoundingBox();
 //        log("Bx1:%f,x2:%f,y1:%f,y2:%f",box.getMinX(),box.getMaxX(),box.getMinY(),box.getMaxY());
-        auto it = nodes->begin();
-        if (gameViewLayer->getBoundingBox().containsPoint(currentBlock->getWorldSpace((*it))))
-        {
+//        auto it = nodes->begin();
+//    auto vec1 = gameViewLayer->convertToWorldSpace(currentBlock->getPosition());
+//    log("node1.x:%f,node1.y%f",vec1.x,vec1.y);
+//        if (gameViewLayer->getBoundingBox().containsPoint(currentBlock->getNodeWorldSpace((*it))))
+//        {
+////            currentBlock->setBlockSchedule(0);
+//            log("true***********");
+//        }else{
+//            log("false-----------");
 //            currentBlock->setBlockSchedule(0);
-            log("true***********");
-        }else{
-            log("false-----------");
-            currentBlock->setBlockSchedule(0);
-            addNewBlock();
-        }
+//            addNewBlock();
+//        }
 //    auto it = nodes->begin();
 //    Vec2 vec1 = currentBlock->getWorldSpace((*it));
 //        log("node1.x:%f,node1.y%f",vec1.x,vec1.y);
@@ -201,10 +212,10 @@ void GameScene::gameStart()
     nextBlockLayer->addChild(nextBlock);
     
     
-    currentBlock = IBlock::create();
-    currentBlock->setPosition(bornPosition);
+    currentBlock = RZBlock::create();
+    currentBlock->setPosition(currentBlock->getBornPosition());
     gameViewLayer->addChild(currentBlock);
-    currentBlock->setBlockSchedule(1);
+
 }
 
 void GameScene::gamePause()
@@ -224,10 +235,9 @@ void GameScene::gameBack()
 
 void GameScene::update(float delta)
 {
-    auto nodes = currentBlock->getNodes();
-//    Vec2 vec1 = gameViewLayer->convertToNodeSpace(currentBlock->getWorldSpace(nodes->at(0)));
+//    auto nodes = currentBlock->getNodes();
+//    Vec2 vec1 = gameViewLayer->convertToNodeSpace(currentBlock->getNodeWorldSpace(nodes->at(0)));
 //    log("node1.x:%f,node1.y%f",vec1.x,vec1.y);
-    
     blockCollide();
     
 }

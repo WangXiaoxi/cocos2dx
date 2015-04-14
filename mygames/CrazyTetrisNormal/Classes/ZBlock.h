@@ -16,7 +16,10 @@ class ZBlock : public BaseBlock
 {
     
 public:
+    bool init();
     CREATE_FUNC(ZBlock);
+    Point getBornPosition();
+    void setRotation90();
 };
 
 #endif /* defined(__CrazyTetris__ZBlock__) */

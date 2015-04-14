@@ -12,11 +12,11 @@
 #include <stdio.h>
 #include "BaseBlock.h"
 
-class QBlock : BaseBlock
+class QBlock : public BaseBlock
 {
     
 public:
-    
+    virtual bool init();
     CREATE_FUNC(QBlock);
 };
 
