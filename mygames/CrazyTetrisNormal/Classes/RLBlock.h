@@ -18,6 +18,7 @@ class RLBlock : public BaseBlock
 public:
     bool init();
     CREATE_FUNC(RLBlock);
+    Point getBornPosition();
 };
 
 #endif /* defined(__CrazyTetris__RLBlock__) */

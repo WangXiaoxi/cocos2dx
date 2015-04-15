@@ -17,6 +17,7 @@ class LBlock : public BaseBlock
 public:
     virtual bool init();
     CREATE_FUNC(LBlock);
+    Point getBornPosition();
 };
 
 #endif /* defined(__CrazyTetris__LBlock__) */

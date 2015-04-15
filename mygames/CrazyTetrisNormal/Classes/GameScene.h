@@ -61,6 +61,8 @@ private:
 public:
     //添加一个新的方块
     void addNewBlock();
+    //生成一个方块
+    BaseBlock * createNewBlock();
     //碰撞检测
     void blockCollide();
     //消除行

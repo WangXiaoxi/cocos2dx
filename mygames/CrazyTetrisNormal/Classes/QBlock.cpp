@@ -18,3 +18,8 @@ bool QBlock::init()
     INIT_NODES_POSITION_BY_TAG(3, NODE_WIDTH*2+NODE_WIDTH/2, NODE_HEIGHT*1+NODE_HEIGHT/2);
     return true;
 }
+
+Point QBlock::getBornPosition()
+{
+    return bornPosition;
+}

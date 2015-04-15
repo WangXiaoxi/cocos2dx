@@ -18,6 +18,7 @@ class QBlock : public BaseBlock
 public:
     virtual bool init();
     CREATE_FUNC(QBlock);
+    Point getBornPosition();
 };
 
 #endif /* defined(__CrazyTetris__QBlock__) */

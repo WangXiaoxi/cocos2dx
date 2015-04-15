@@ -149,40 +149,59 @@ bool GameScene::init()
     return true;
 }
 
-void GameScene::addNewBlock()
+
+BaseBlock * GameScene::createNewBlock()
 {
-    
-    currentBlock = LBlock::create();
-    currentBlock->setPosition(bornPosition);
-    currentBlock->setBlockSchedule(1);
-    gameViewLayer->addChild(currentBlock);
-    
-//    currentBlock->removeFromParent();
-    //先将下一块方块从待转区移除
-//    nextBlock->removeFromParent();
-//    nextBlockLayer->removeAllChildren();
-    //将方块赋值给当前的方块指针
-//    currentBlock = nullptr;
-//    currentBlock = nextBlock;
-//    gameViewLayer->addChild(currentBlock);
-//    currentBlock->setPosition(bornPosition);
-//    currentBlock->setScale(1);
-//    currentBlock->setBlockSchedule(1);
-//
-//    nextBlock = IBlock::create();
-//    nextBlock->setPosition(nextBlockPosition);
-//    nextBlock->setScale(0.7);
-//    nextBlockLayer->addChild(nextBlock);
+    BaseBlock* block;
+    int i = (int)(CCRANDOM_0_1()*10)%7;
+    switch (i)
+    {
+        case 0:
+            block = IBlock::create();
+            break;
+        case 1:
+            block = LBlock::create();
+            break;
+        case 2:
+            block = RLBlock::create();
+            break;
+        case 3:
+            block = QBlock::create();
+            break;
+        case 4:
+            block = ZBlock::create();
+            break;
+        case 5:
+            block = RZBlock::create();
+            break;
+        case 6:
+            block = TBlock::create();
+            break;
+        default:
+            break;
+    }
+    return block;
 }
 
 void GameScene::blockCollide()
 {
-    auto nodes = currentBlock->getNodes();
+//    auto nodes = currentBlock->getNodes();
     
     if (!canMoveDown())
     {
         currentBlock->setBlockSchedule(0);
+//        currentBlock->removeFromParent();
+//        if (nextBlock)
+//        {
+            currentBlock=nextBlock;
+            nextBlock = createNewBlock();
+            
+            currentBlock->setPosition(currentBlock->getBornPosition());
+            currentBlock->setScale(1);
+            gameViewLayer->addChild(currentBlock);
+//        }
     }
+    
 //    auto nodes = currentBlock->getNodes();
 //    for (auto it = nodes->begin(); it!=nodes->end(); it++)
 //    {
@@ -261,20 +280,41 @@ bool GameScene::isOutofGameView()
     return false;
 }
 
+void GameScene::addNewBlock()
+{
+    //    nextBlockLayer->removeAllChildren();
+    auto temp = nextBlock;
+//    nextBlock->removeFromParent();
+    nextBlockLayer->removeAllChildren();
+    nextBlock = createNewBlock();
+    nextBlock->setPosition(nextBlockPosition);
+    nextBlock->setScale(0.7);
+    nextBlockLayer->addChild(nextBlock);
+  
+    
+    currentBlock = temp;
+    currentBlock->setPosition(currentBlock->getBornPosition());
+    currentBlock->setScale(1);
+    currentBlock->setBlockSchedule(1);
+    gameViewLayer->addChild(currentBlock);
+
+}
 
 void GameScene::gameStart()
 {
-    nextBlock = IBlock::create();
+//    log("8888888");
+    nextBlock = createNewBlock();
     nextBlock->setPosition(nextBlockPosition);
     nextBlock->setScale(0.7);
     nextBlockLayer->addChild(nextBlock);
     
-    
-    currentBlock = IBlock::create();
+    currentBlock = createNewBlock();
     currentBlock->setPosition(currentBlock->getBornPosition());
-    gameViewLayer->addChild(currentBlock);
+    currentBlock->setScale(1);
     currentBlock->setBlockSchedule(1);
+    gameViewLayer->addChild(currentBlock);
 }
+
 
 void GameScene::gamePause()
 {
