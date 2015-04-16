@@ -44,11 +44,11 @@ bool BaseBlock::initWithFile(std::string &filename)
 
 void BaseBlock::setBlockSchedule(float dt)
 {
-    if (dt>0)
+    if (dt==0)
     {
-        schedule(schedule_selector(BaseBlock::updateBlock), dt);
-    }else{
         unschedule(schedule_selector(BaseBlock::updateBlock));
+    }else{
+        schedule(schedule_selector(BaseBlock::updateBlock), dt);
     }
 }
 

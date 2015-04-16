@@ -24,8 +24,8 @@ using namespace cocos2d::ui;
 class GameScene : public Layer {
 //游戏属性
 private:
-    int BLOCK_STOP = 0;
-    int BLOCK_SPEED = 1;
+    float BLOCK_STOP = 0;
+    float BLOCK_SPEED = 1;
     
 private:
     

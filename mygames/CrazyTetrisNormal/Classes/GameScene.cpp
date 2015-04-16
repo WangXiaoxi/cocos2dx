@@ -142,7 +142,7 @@ bool GameScene::init()
     INIT_BUTTON(btnDown, rootNode, "downButton", DOWN, btnClickCallback);
     INIT_BUTTON(btnDownIMD, rootNode, "downButtonIMD", DOWN_IMD, btnClickCallback);
 
-    scheduleUpdate();
+//    scheduleUpdate();
     
     gameStart();
     
@@ -204,7 +204,18 @@ void GameScene::blockCollide()
 {
     if (!canMoveDown())
     {
+        fallenNodes->pushBack(*currentBlock->getNodes());
+//        Node * node = Node::create();
+//        gameViewLayer->addChild(node);
+//        
+//        for (auto it = currentBlock->getNodes()->begin(); it!=currentBlock->getNodes()->end(); it++)
+//        {
+//            node->addChild((*it));
+//            (*it)->setPosition(gameViewLayer->convertToNodeSpace(currentBlock->getNodeWorldSpace((*it))));
+//        }
+//        
         addNewBlock();
+        
     }
 }
 
@@ -217,6 +228,26 @@ bool GameScene::canMoveLeft()
         if (position.x<40)
         {
             return false;
+        }
+    }
+    
+    auto tempNodes = currentBlock->getNodes();
+    for (auto it = fallenNodes->begin(); it!= fallenNodes->end(); it++)
+    {
+        for (auto c_it = tempNodes->begin(); c_it!=tempNodes->end(); c_it++)
+        {
+            BaseBlock * fallenParent = (BaseBlock*)(*it)->getParent();
+            
+            Vec2 fallenNodePosition = gameViewLayer->convertToNodeSpace(fallenParent->getNodeWorldSpace((*it)));
+            Vec2 currentNodePosition = gameViewLayer->convertToNodeSpace(currentBlock->getNodeWorldSpace((*c_it)));
+            
+            Rect fallenNodeBoudingBox = Rect(fallenNodePosition.x-NODE_WIDTH/2, fallenNodePosition.y-NODE_HEIGHT/2, NODE_WIDTH, NODE_HEIGHT);
+            if (fallenNodeBoudingBox.containsPoint(currentNodePosition-Vec2(NODE_WIDTH, NODE_HEIGHT)))
+            {
+//                currentBlock->moveRight();
+                return false;
+            }
+            
         }
     }
     return true;
@@ -233,22 +264,63 @@ bool GameScene::canMoveRight()
             return false;
         }
     }
+    
+    auto tempNodes = currentBlock->getNodes();
+    for (auto it = fallenNodes->begin(); it!= fallenNodes->end(); it++)
+    {
+        BaseBlock * fallenParent = (BaseBlock*)(*it)->getParent();
+        Vec2 fallenNodePosition = gameViewLayer->convertToNodeSpace(fallenParent->getNodeWorldSpace((*it)));
+        log("fallenNode.x:%f,y:%f",fallenNodePosition.x,fallenNodePosition.y);
+        for (auto c_it = tempNodes->begin(); c_it!=tempNodes->end(); c_it++)
+        {
+            Vec2 currentNodePosition = gameViewLayer->convertToNodeSpace(currentBlock->getNodeWorldSpace((*c_it)));
+            Rect fallenNodeBoudingBox = Rect(fallenNodePosition.x-NODE_WIDTH/2, fallenNodePosition.y-NODE_HEIGHT/2, NODE_WIDTH, NODE_HEIGHT);
+            
+            log("currentNode:%f,y:%f",currentNodePosition.x,currentNodePosition.y);
+            if (fallenNodeBoudingBox.containsPoint(currentNodePosition+Vec2(NODE_WIDTH, NODE_HEIGHT)))
+            {
+                return false;
+            }
+            
+        }
+    }
     return true;
 }
 
 bool GameScene::canMoveDown()
 {
-    
     auto nodes = currentBlock->getNodes();
-        for (auto it = nodes->begin(); it!=nodes->end(); it++)
+    for (auto it = nodes->begin(); it!=nodes->end(); it++)
+    {
+        Point position = gameViewLayer->convertToNodeSpace(currentBlock->getNodeWorldSpace((*it)));
+        if (position.y<40)
         {
-            Point position = gameViewLayer->convertToNodeSpace(currentBlock->getNodeWorldSpace((*it)));
-//            log("Point.x:%f,y:%f",position.x,position.y);
-            if (position.y<40)
+            return false;
+        }
+    }
+    auto tempNodes = currentBlock->getNodes();
+    for (auto it = fallenNodes->begin(); it!= fallenNodes->end(); it++)
+    {
+
+        for (auto c_it = tempNodes->begin(); c_it!=tempNodes->end(); c_it++)
+        {
+            BaseBlock * fallenParent = (BaseBlock*)(*it)->getParent();
+            
+            Vec2 fallenNodePosition = gameViewLayer->convertToNodeSpace(fallenParent->getNodeWorldSpace((*it)));
+            Vec2 currentNodePosition = gameViewLayer->convertToNodeSpace(currentBlock->getNodeWorldSpace((*c_it)));
+            if (fabs(currentNodePosition.x-fallenNodePosition.x)>20)
+            {
+                continue;
+            }
+            
+            if ((currentNodePosition.y-fallenNodePosition.y)<60)
             {
                 return false;
             }
+            
         }
+    }
+    
     return true;
 }
 
@@ -281,7 +353,7 @@ bool GameScene::isOutofGameView()
 void GameScene::addNewBlock()
 {
     currentBlock->setBlockSchedule(BLOCK_STOP);
-    
+//    currentBlock->removeFromParent();
     currentBlock = createNewBlock(nextBlock);
     currentBlock->setPosition(currentBlock->getBornPosition());
     currentBlock->setScale(1);
@@ -297,7 +369,7 @@ void GameScene::addNewBlock()
 
 void GameScene::gameStart()
 {
-//    log("8888888");
+    schedule(schedule_selector(GameScene::update), 1);
     nextBlock = createNewBlock(nullptr);
     nextBlock->setPosition(nextBlockPosition);
     nextBlock->setScale(0.7);
