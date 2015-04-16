@@ -67,6 +67,15 @@ CC_DEPRECATED_ATTRIBUTE bool BaseBlock::initWithMatris(int matris[][4])
     }
     return true;
 }
+void BaseBlock::setRotatedTAG(int mTag)
+{
+    rotatedTAG = mTag;
+}
+
+int BaseBlock::getRotatedTAG()
+{
+    return rotatedTAG;
+}
 
 Vector<BlockNode*> * BaseBlock::getNodes()
 {

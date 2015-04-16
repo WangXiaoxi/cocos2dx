@@ -45,7 +45,4 @@ bool BlockNode::setNodeColor(Color3B color)
     return false;
 }
 
-Point BlockNode::getPositionInLayer(cocos2d::Layer *layer,Node*node)
-{
-//    return layer->convertToNodeSpace(((BaseBlock*)node)->getWorldSpace());
-}
+

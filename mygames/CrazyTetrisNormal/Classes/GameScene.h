@@ -22,8 +22,13 @@ USING_NS_CC;
 using namespace cocos2d::ui;
 
 class GameScene : public Layer {
-
+//游戏属性
 private:
+    int BLOCK_STOP = 0;
+    int BLOCK_SPEED = 1;
+    
+private:
+    
     BaseBlock * currentBlock;//当前操作方块
     BaseBlock * nextBlock;//下一个方块
     
@@ -62,7 +67,7 @@ public:
     //添加一个新的方块
     void addNewBlock();
     //生成一个方块
-    BaseBlock * createNewBlock();
+    BaseBlock * createNewBlock(BaseBlock*);
     //碰撞检测
     void blockCollide();
     //消除行

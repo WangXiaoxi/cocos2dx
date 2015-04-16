@@ -30,9 +30,6 @@ public:
     virtual bool initWithArgs(Color4F color);
     bool setNodeColor(Color3B color);
     CREATE_FUNC(BlockNode);
-    
-public:
-    virtual Point getPositionInLayer(Layer*,Node*);
 };
 
 #endif /* defined(__CrazyTetris__BlockNode__) */

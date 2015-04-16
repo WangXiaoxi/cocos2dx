@@ -150,11 +150,20 @@ bool GameScene::init()
 }
 
 
-BaseBlock * GameScene::createNewBlock()
+BaseBlock * GameScene::createNewBlock(BaseBlock* oriBlock)
 {
-    BaseBlock* block;
-    int i = (int)(CCRANDOM_0_1()*10)%7;
-    switch (i)
+    BaseBlock*block;
+    int TAG;
+    int rotatedTAG;
+    if (oriBlock)
+    {
+        TAG = oriBlock->getTag();
+        rotatedTAG = oriBlock->getRotatedTAG();
+    }else{
+        TAG = (int)(CCRANDOM_0_1()*10)%7;
+        rotatedTAG = (int)(CCRANDOM_0_1()*10)%4;
+    }
+    switch (TAG)
     {
         case 0:
             block = IBlock::create();
@@ -180,34 +189,23 @@ BaseBlock * GameScene::createNewBlock()
         default:
             break;
     }
+    
+    for (int i = 0; i<rotatedTAG; i++)
+    {
+        block->setRotation90();
+    }
+    
+    block->setTag(TAG);
+    block->setRotatedTAG(rotatedTAG);
     return block;
 }
 
 void GameScene::blockCollide()
 {
-//    auto nodes = currentBlock->getNodes();
-    
     if (!canMoveDown())
     {
-        currentBlock->setBlockSchedule(0);
-//        currentBlock->removeFromParent();
-//        if (nextBlock)
-//        {
-            currentBlock=nextBlock;
-            nextBlock = createNewBlock();
-            
-            currentBlock->setPosition(currentBlock->getBornPosition());
-            currentBlock->setScale(1);
-            gameViewLayer->addChild(currentBlock);
-//        }
+        addNewBlock();
     }
-    
-//    auto nodes = currentBlock->getNodes();
-//    for (auto it = nodes->begin(); it!=nodes->end(); it++)
-//    {
-//        Point position = gameViewLayer->convertToNodeSpace(currentBlock->getNodeWorldSpace((*it)));
-//        log("Point.x:%f,y:%f",position.x,position.y);
-//    }
 }
 
 bool GameScene::canMoveLeft()
@@ -282,36 +280,33 @@ bool GameScene::isOutofGameView()
 
 void GameScene::addNewBlock()
 {
-    //    nextBlockLayer->removeAllChildren();
-    auto temp = nextBlock;
-//    nextBlock->removeFromParent();
-    nextBlockLayer->removeAllChildren();
-    nextBlock = createNewBlock();
+    currentBlock->setBlockSchedule(BLOCK_STOP);
+    
+    currentBlock = createNewBlock(nextBlock);
+    currentBlock->setPosition(currentBlock->getBornPosition());
+    currentBlock->setScale(1);
+    currentBlock->setBlockSchedule(BLOCK_SPEED);
+    gameViewLayer->addChild(currentBlock);
+    
+    nextBlock->removeFromParent();
+    nextBlock = createNewBlock(nullptr);
     nextBlock->setPosition(nextBlockPosition);
     nextBlock->setScale(0.7);
     nextBlockLayer->addChild(nextBlock);
-  
-    
-    currentBlock = temp;
-    currentBlock->setPosition(currentBlock->getBornPosition());
-    currentBlock->setScale(1);
-    currentBlock->setBlockSchedule(1);
-    gameViewLayer->addChild(currentBlock);
-
 }
 
 void GameScene::gameStart()
 {
 //    log("8888888");
-    nextBlock = createNewBlock();
+    nextBlock = createNewBlock(nullptr);
     nextBlock->setPosition(nextBlockPosition);
     nextBlock->setScale(0.7);
     nextBlockLayer->addChild(nextBlock);
     
-    currentBlock = createNewBlock();
+    currentBlock = createNewBlock(nullptr);
     currentBlock->setPosition(currentBlock->getBornPosition());
     currentBlock->setScale(1);
-    currentBlock->setBlockSchedule(1);
+    currentBlock->setBlockSchedule(BLOCK_SPEED);
     gameViewLayer->addChild(currentBlock);
 }
 

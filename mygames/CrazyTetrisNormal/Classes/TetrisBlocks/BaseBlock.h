@@ -22,6 +22,7 @@ addChild(nodes->at(__TAG__));
 class BaseBlock : public Node
 {
 protected:
+    int rotatedTAG;
     //记录旋转的角度
     int rotateTimes=0;
     //记录是否被旋转过
@@ -41,6 +42,8 @@ public:
     virtual Point getNodeWorldSpace(BlockNode*);
 
 public:
+    void setRotatedTAG(int);
+    int getRotatedTAG();
     Vector<BlockNode*> * getNodes();
     virtual void setBornPosition(Vec2);
     virtual Vec2 getBornPosition();
