@@ -342,9 +342,15 @@ void GameScene::deleteCompleteLine()
         BaseBlock * parentBlock = (BaseBlock*)(*it)->getParent();
         
 //        int row = (gameViewLayer->convertToNodeSpace(parentBlock->getNodeWorldSpace((*it))).x + 0.5) / NODE_WIDTH;
-        int line = (gameViewLayer->convertToNodeSpace(parentBlock->getNodeWorldSpace((*it))).y + 0.5) / NODE_HEIGHT;
-        
-        lines[line]->pushBack((*it));
+        int y = (gameViewLayer->convertToNodeSpace(parentBlock->getNodeWorldSpace((*it))).y + 0.5) ;
+        int height =  NODE_HEIGHT;
+        int line = y/height;
+        log("y:%d , height:%d , line:%d",y,height,line);
+        log("line:%d",line);
+        int result = 60/40;
+        log("60/40=:%d",result);
+//        lines[line]->pushBack((*it));
+//        log("lines[%d].size:%d",line,lines[line]->size());
     }
     
     for (int i = 0; i < 20; i++)
@@ -353,7 +359,8 @@ void GameScene::deleteCompleteLine()
         {
             for (auto it = lines[i]->begin(); it!=lines[i]->end(); it++)
             {
-                (*it)->removeFromParent();
+//                (*it)->removeFromParent();
+//                log("**************");
 //                if (i<19)
 //                {
 //                    for (auto iit = lines[i+1]->begin(); iit!=lines[i+1]->end() ; iit++)
