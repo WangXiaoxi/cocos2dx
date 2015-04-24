@@ -10,7 +10,9 @@
 bool ZBlock::init()
 {
     BaseBlock::init();
-    BaseBlock::initWithColor(Color4F::MAGENTA);
+//    BaseBlock::initWithColor(Color4F::MAGENTA);
+    blockFileName = "天蓝.png";
+    BaseBlock::initWithFile(blockFileName);
 
 //    sprite = Sprite::create();
 //    sprite->setTextureRect(Rect(0, 0, NODE_WIDTH*3, NODE_HEIGHT*3));

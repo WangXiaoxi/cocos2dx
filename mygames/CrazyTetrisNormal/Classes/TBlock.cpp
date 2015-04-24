@@ -10,7 +10,9 @@
 bool TBlock::init()
 {
     BaseBlock::init();
-    BaseBlock::initWithColor(Color4F::WHITE);
+//    BaseBlock::initWithColor(Color4F::WHITE);
+    blockFileName = "蓝色.png";
+    BaseBlock::initWithFile(blockFileName);
 
 
 //    sprite = Sprite::create();

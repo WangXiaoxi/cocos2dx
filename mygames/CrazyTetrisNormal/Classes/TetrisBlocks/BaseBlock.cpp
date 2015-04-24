@@ -36,7 +36,7 @@ bool BaseBlock::initWithFile(std::string &filename)
 {
     for(auto it = nodes->begin();it!=nodes->end();it++)
     {
-        
+        (*it)->initWithArgs(filename);
     }
     return true;
 }

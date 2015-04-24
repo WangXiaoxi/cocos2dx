@@ -11,7 +11,8 @@
 bool BlockNode::initWithArgs(std::string filename)
 {
     Sprite * sprite = Sprite::create(filename);
-    sprite->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
+    sprite->setTextureRect(Rect(0, 0, NODE_WIDTH, NODE_HEIGHT));
+    sprite->setAnchorPoint(Vec2::ZERO);
     addChild(sprite);
 //    log("BlockNode ::: method initWithArgs1 is called!");
     return true;

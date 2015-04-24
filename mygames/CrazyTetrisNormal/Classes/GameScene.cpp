@@ -69,6 +69,17 @@ bool GameScene::init()
     {
         return false;
     }
+    
+    //获取系统时间
+    struct timeval now;
+    gettimeofday(&now, NULL);
+    //初始化随机种子
+    //timeval 是个结构体，里面有两个变量，一个是以秒为单位的，一个是以微秒为单位的
+    unsigned rand_seed = (unsigned)(now.tv_sec*1000+now.tv_usec/1000);
+    srand(rand_seed);
+    
+    
+    
     fallenNodes = new Vector<BlockNode*>;
     //游戏数据初始化
     visibleSize = Director::getInstance()->getVisibleSize();
@@ -242,7 +253,7 @@ bool GameScene::canMoveLeft()
             Vec2 currentNodePosition = gameViewLayer->convertToNodeSpace(currentBlock->getNodeWorldSpace((*c_it)));
             
             Rect fallenNodeBoudingBox = Rect(fallenNodePosition.x-NODE_WIDTH/2, fallenNodePosition.y-NODE_HEIGHT/2, NODE_WIDTH, NODE_HEIGHT);
-            if (fallenNodeBoudingBox.containsPoint(currentNodePosition-Vec2(NODE_WIDTH, NODE_HEIGHT)))
+            if (fallenNodeBoudingBox.containsPoint(currentNodePosition-Vec2(NODE_WIDTH, 0)))
             {
 //                currentBlock->moveRight();
                 return false;
@@ -277,7 +288,7 @@ bool GameScene::canMoveRight()
             Rect fallenNodeBoudingBox = Rect(fallenNodePosition.x-NODE_WIDTH/2, fallenNodePosition.y-NODE_HEIGHT/2, NODE_WIDTH, NODE_HEIGHT);
             
             log("currentNode:%f,y:%f",currentNodePosition.x,currentNodePosition.y);
-            if (fallenNodeBoudingBox.containsPoint(currentNodePosition+Vec2(NODE_WIDTH, NODE_HEIGHT)))
+            if (fallenNodeBoudingBox.containsPoint(currentNodePosition+Vec2(NODE_WIDTH, 0)))
             {
                 return false;
             }
@@ -320,7 +331,6 @@ bool GameScene::canMoveDown()
             
         }
     }
-    
     return true;
 }
 
@@ -369,7 +379,8 @@ void GameScene::addNewBlock()
 
 void GameScene::gameStart()
 {
-    schedule(schedule_selector(GameScene::update), 1);
+//    schedule(schedule_selector(GameScene::update), 1);
+    scheduleUpdate();
     nextBlock = createNewBlock(nullptr);
     nextBlock->setPosition(nextBlockPosition);
     nextBlock->setScale(0.7);

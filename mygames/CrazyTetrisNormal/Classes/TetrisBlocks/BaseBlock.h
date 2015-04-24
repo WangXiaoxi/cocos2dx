@@ -22,6 +22,7 @@ addChild(nodes->at(__TAG__));
 class BaseBlock : public Node
 {
 protected:
+    std::string blockFileName;
     int rotatedTAG;
     //记录旋转的角度
     int rotateTimes=0;
