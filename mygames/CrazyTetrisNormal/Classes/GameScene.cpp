@@ -81,6 +81,9 @@ bool GameScene::init()
     
     
     fallenNodes = new Vector<BlockNode*>;
+//    fallen = new Vector<Vector<BlockNode*>*>;
+   
+    
     //游戏数据初始化
     visibleSize = Director::getInstance()->getVisibleSize();
     //添加通过CocosStudio制作的游戏场景到当前Scene中
@@ -216,17 +219,11 @@ void GameScene::blockCollide()
     if (!canMoveDown())
     {
         fallenNodes->pushBack(*currentBlock->getNodes());
-//        Node * node = Node::create();
-//        gameViewLayer->addChild(node);
-//        
-//        for (auto it = currentBlock->getNodes()->begin(); it!=currentBlock->getNodes()->end(); it++)
-//        {
-//            node->addChild((*it));
-//            (*it)->setPosition(gameViewLayer->convertToNodeSpace(currentBlock->getNodeWorldSpace((*it))));
-//        }
-//        
-        addNewBlock();
         
+        deleteCompleteLine();
+        
+        
+        addNewBlock();
     }
 }
 
@@ -281,18 +278,15 @@ bool GameScene::canMoveRight()
     {
         BaseBlock * fallenParent = (BaseBlock*)(*it)->getParent();
         Vec2 fallenNodePosition = gameViewLayer->convertToNodeSpace(fallenParent->getNodeWorldSpace((*it)));
-        log("fallenNode.x:%f,y:%f",fallenNodePosition.x,fallenNodePosition.y);
         for (auto c_it = tempNodes->begin(); c_it!=tempNodes->end(); c_it++)
         {
             Vec2 currentNodePosition = gameViewLayer->convertToNodeSpace(currentBlock->getNodeWorldSpace((*c_it)));
             Rect fallenNodeBoudingBox = Rect(fallenNodePosition.x-NODE_WIDTH/2, fallenNodePosition.y-NODE_HEIGHT/2, NODE_WIDTH, NODE_HEIGHT);
             
-            log("currentNode:%f,y:%f",currentNodePosition.x,currentNodePosition.y);
             if (fallenNodeBoudingBox.containsPoint(currentNodePosition+Vec2(NODE_WIDTH, 0)))
             {
                 return false;
             }
-            
         }
     }
     return true;
@@ -336,6 +330,43 @@ bool GameScene::canMoveDown()
 
 void GameScene::deleteCompleteLine()
 {
+    
+    for (int i=0; i<20; i++)
+    {
+        lines[i] = new Vector<BlockNode*>;
+    }
+    
+    
+    for (auto it = fallenNodes->begin(); it!=fallenNodes->end(); it++)
+    {
+        BaseBlock * parentBlock = (BaseBlock*)(*it)->getParent();
+        
+//        int row = (gameViewLayer->convertToNodeSpace(parentBlock->getNodeWorldSpace((*it))).x + 0.5) / NODE_WIDTH;
+        int line = (gameViewLayer->convertToNodeSpace(parentBlock->getNodeWorldSpace((*it))).y + 0.5) / NODE_HEIGHT;
+        
+        lines[line]->pushBack((*it));
+    }
+    
+    for (int i = 0; i < 20; i++)
+    {
+        if (lines[i]->size()>9)
+        {
+            for (auto it = lines[i]->begin(); it!=lines[i]->end(); it++)
+            {
+                (*it)->removeFromParent();
+//                if (i<19)
+//                {
+//                    for (auto iit = lines[i+1]->begin(); iit!=lines[i+1]->end() ; iit++)
+//                    {
+//                        (BlockNode*)(*iit)->;
+//                    }
+//                }
+            }
+        }
+//        lines[i]->clear();
+    }
+    
+    
     
 }
 

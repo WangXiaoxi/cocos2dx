@@ -29,10 +29,13 @@ private:
     
 private:
     
-    BaseBlock * currentBlock;//当前操作方块
+    BaseBlock * currentBlock;//当前操作方块
     BaseBlock * nextBlock;//下一个方块
     
     Vector<BlockNode*> *fallenNodes; // 已经落下的方块
+    Vector<BlockNode*> *lines[20];  //行数
+//    Vector<Vector<BlockNode*>*>* fallen;//已经下落的方块
+    
 private:
     //当前方块的位置
     Vec2 currentBlockPositon;
