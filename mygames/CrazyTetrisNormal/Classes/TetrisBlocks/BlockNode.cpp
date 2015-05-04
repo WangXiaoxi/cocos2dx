@@ -46,4 +46,10 @@ bool BlockNode::setNodeColor(Color3B color)
     return false;
 }
 
+bool BlockNode::moveDown()
+{
+    setPosition(getPosition()-Vec2(0, NODE_HEIGHT));
+    return true;
+}
+
 

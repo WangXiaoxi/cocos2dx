@@ -304,13 +304,14 @@ bool GameScene::canMoveDown()
         }
     }
     auto tempNodes = currentBlock->getNodes();
+    
     for (auto it = fallenNodes->begin(); it!= fallenNodes->end(); it++)
     {
 
         for (auto c_it = tempNodes->begin(); c_it!=tempNodes->end(); c_it++)
         {
             BaseBlock * fallenParent = (BaseBlock*)(*it)->getParent();
-            
+            log("fallenNodes.count%zd",fallenNodes->size());
             Vec2 fallenNodePosition = gameViewLayer->convertToNodeSpace(fallenParent->getNodeWorldSpace((*it)));
             Vec2 currentNodePosition = gameViewLayer->convertToNodeSpace(currentBlock->getNodeWorldSpace((*c_it)));
             if (fabs(currentNodePosition.x-fallenNodePosition.x)>20)
@@ -345,32 +346,35 @@ void GameScene::deleteCompleteLine()
         int y = (gameViewLayer->convertToNodeSpace(parentBlock->getNodeWorldSpace((*it))).y + 0.5) ;
         int height =  NODE_HEIGHT;
         int line = y/height;
-        log("y:%d , height:%d , line:%d",y,height,line);
-        log("line:%d",line);
-        int result = 60/40;
-        log("60/40=:%d",result);
-//        lines[line]->pushBack((*it));
+//        log("y:%d , height:%d , line:%d",y,height,line);
+//        log("line:%d",line);
+//        int result = 60/40;
+//        log("60/40=:%d",result);
+        lines[line]->pushBack((*it));
 //        log("lines[%d].size:%d",line,lines[line]->size());
     }
     
     for (int i = 0; i < 20; i++)
     {
+        log("line[%d].count:%zd",i,lines[i]->size());
         if (lines[i]->size()>9)
         {
+            
             for (auto it = lines[i]->begin(); it!=lines[i]->end(); it++)
             {
-//                (*it)->removeFromParent();
-//                log("**************");
+                (*it)->removeFromParent();
+                log("888888888888");
 //                if (i<19)
 //                {
 //                    for (auto iit = lines[i+1]->begin(); iit!=lines[i+1]->end() ; iit++)
 //                    {
-//                        (BlockNode*)(*iit)->;
+//                        (*iit)->moveDown();
 //                    }
+//                    lines[i]->clear();
 //                }
             }
         }
-//        lines[i]->clear();
+        
     }
     
     

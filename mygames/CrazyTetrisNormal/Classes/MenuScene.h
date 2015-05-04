@@ -20,6 +20,8 @@ public:
     enum ClickTag
     {
         START_GAME,
+        START_GAME_DOUBLE_PLAYER,
+        HERO_LIST,
         EXIT_GAME
     };
     

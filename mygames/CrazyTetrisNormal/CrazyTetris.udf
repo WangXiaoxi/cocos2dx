@@ -21,6 +21,8 @@
         <OpenedDocuments>
           <FilePathData Path="MenuScene.csd" />
           <FilePathData Path="GameScene.csd" />
+          <FilePathData Path="HeroListScene.csd" />
+          <FilePathData Path="ServerSelect.csd" />
         </OpenedDocuments>
         <ActiveDocument Path="GameScene.csd" />
       </Value>

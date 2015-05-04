@@ -48,33 +48,33 @@
             <EndColor A="255" R="255" G="255" B="255" />
             <ColorVector ScaleY="1.0000" />
           </NodeObjectData>
-          <NodeObjectData Name="pauseButton" ActionTag="-1464623615" FrameEvent="" Tag="12" LeftMargin="461.4692" RightMargin="132.5308" TopMargin="76.5083" BottomMargin="1023.4917" TouchEnable="True" FontSize="14" ButtonText="暂停" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
-            <Position X="484.4692" Y="1041.4917" />
+          <NodeObjectData Name="pauseButton" ActionTag="-1464623615" FrameEvent="" Tag="12" LeftMargin="459.6133" RightMargin="134.3867" TopMargin="81.3596" BottomMargin="1018.6403" TouchEnable="True" FontSize="14" ButtonText="" Scale9Enable="True" Scale9Width="30" Scale9Height="30" ctype="ButtonObjectData">
+            <Position X="486.3359" Y="1034.2216" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <AnchorPoint ScaleX="0.5809" ScaleY="0.4328" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <Size X="46.0000" Y="36.0000" />
+            <PrePosition X="0.7599" Y="0.9104" />
+            <PreSize X="0.0000" Y="0.0000" />
+            <TextColor A="255" R="65" G="65" B="70" />
+            <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
+            <PressedFileData Type="Default" Path="Default/Button_Press.png" />
+            <NormalFileData Type="Normal" Path="pause.png" />
+          </NodeObjectData>
+          <NodeObjectData Name="backButton" ActionTag="19288559" FrameEvent="" Tag="13" LeftMargin="564.2748" RightMargin="29.7252" TopMargin="152.9233" BottomMargin="947.0767" TouchEnable="True" FontSize="14" ButtonText="返回" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
+            <Position X="587.2748" Y="965.0767" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
             <Size X="46.0000" Y="36.0000" />
-            <PrePosition X="0.7570" Y="0.9168" />
+            <PrePosition X="0.9176" Y="0.8495" />
             <PreSize X="0.0000" Y="0.0000" />
             <TextColor A="255" R="65" G="65" B="70" />
             <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
             <PressedFileData Type="Default" Path="Default/Button_Press.png" />
             <NormalFileData Type="Default" Path="Default/Button_Normal.png" />
           </NodeObjectData>
-          <NodeObjectData Name="backButton" ActionTag="19288559" FrameEvent="" Tag="13" LeftMargin="542.4188" RightMargin="51.5812" TopMargin="75.2234" BottomMargin="1024.7766" TouchEnable="True" FontSize="14" ButtonText="返回" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
-            <Position X="565.4188" Y="1042.7766" />
-            <Scale ScaleX="1.0000" ScaleY="1.0000" />
-            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <CColor A="255" R="255" G="255" B="255" />
-            <Size X="46.0000" Y="36.0000" />
-            <PrePosition X="0.8835" Y="0.9179" />
-            <PreSize X="0.0000" Y="0.0000" />
-            <TextColor A="255" R="65" G="65" B="70" />
-            <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
-            <PressedFileData Type="Default" Path="Default/Button_Press.png" />
-            <NormalFileData Type="Default" Path="Default/Button_Normal.png" />
-          </NodeObjectData>
-          <NodeObjectData Name="leftButton" ActionTag="899266174" FrameEvent="" Tag="14" LeftMargin="47.7255" RightMargin="546.2745" TopMargin="982.3743" BottomMargin="117.6257" TouchEnable="True" FontSize="14" ButtonText="《-" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
+          <NodeObjectData Name="leftButton" ActionTag="899266174" FrameEvent="" Tag="14" LeftMargin="47.7255" RightMargin="546.2745" TopMargin="982.3743" BottomMargin="117.6257" TouchEnable="True" FontSize="14" ButtonText="" Scale9Enable="True" Scale9Width="60" Scale9Height="60" ctype="ButtonObjectData">
             <Position X="70.7255" Y="135.6257" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -85,9 +85,9 @@
             <TextColor A="255" R="65" G="65" B="70" />
             <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
             <PressedFileData Type="Default" Path="Default/Button_Press.png" />
-            <NormalFileData Type="Default" Path="Default/Button_Normal.png" />
+            <NormalFileData Type="Normal" Path="pre.png" />
           </NodeObjectData>
-          <NodeObjectData Name="rightButton" ActionTag="-300790355" FrameEvent="" Tag="15" LeftMargin="190.3521" RightMargin="403.6479" TopMargin="979.8045" BottomMargin="120.1955" TouchEnable="True" FontSize="14" ButtonText="-》" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
+          <NodeObjectData Name="rightButton" ActionTag="-300790355" FrameEvent="" Tag="15" LeftMargin="190.3521" RightMargin="403.6479" TopMargin="979.8045" BottomMargin="120.1955" TouchEnable="True" FontSize="14" ButtonText="" Scale9Enable="True" Scale9Width="60" Scale9Height="60" ctype="ButtonObjectData">
             <Position X="213.3521" Y="138.1955" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -98,22 +98,22 @@
             <TextColor A="255" R="65" G="65" B="70" />
             <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
             <PressedFileData Type="Default" Path="Default/Button_Press.png" />
-            <NormalFileData Type="Default" Path="Default/Button_Normal.png" />
+            <NormalFileData Type="Normal" Path="next.png" />
           </NodeObjectData>
-          <NodeObjectData Name="rotateButton" ActionTag="-1587792613" FrameEvent="" Tag="16" LeftMargin="349.6816" RightMargin="244.3184" TopMargin="974.6647" BottomMargin="125.3353" TouchEnable="True" FontSize="14" ButtonText="O" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
-            <Position X="372.6816" Y="143.3353" />
+          <NodeObjectData Name="rotateButton" ActionTag="-1587792613" FrameEvent="" Tag="16" LeftMargin="352.1099" RightMargin="241.8901" TopMargin="974.6647" BottomMargin="125.3353" TouchEnable="True" FontSize="14" ButtonText="" Scale9Enable="True" Scale9Width="60" Scale9Height="60" ctype="ButtonObjectData">
+            <Position X="375.1099" Y="143.3353" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <CColor A="255" R="255" G="255" B="255" />
             <Size X="46.0000" Y="36.0000" />
-            <PrePosition X="0.5823" Y="0.1262" />
+            <PrePosition X="0.5861" Y="0.1262" />
             <PreSize X="0.0000" Y="0.0000" />
             <TextColor A="255" R="65" G="65" B="70" />
             <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
             <PressedFileData Type="Default" Path="Default/Button_Press.png" />
-            <NormalFileData Type="Default" Path="Default/Button_Normal.png" />
+            <NormalFileData Type="Normal" Path="rotate.png" />
           </NodeObjectData>
-          <NodeObjectData Name="downButton" ActionTag="412659408" FrameEvent="" Tag="17" LeftMargin="505.1566" RightMargin="88.8434" TopMargin="977.2344" BottomMargin="122.7656" TouchEnable="True" FontSize="14" ButtonText="|" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
+          <NodeObjectData Name="downButton" ActionTag="412659408" FrameEvent="" Tag="17" LeftMargin="505.1566" RightMargin="88.8434" TopMargin="977.2344" BottomMargin="122.7656" TouchEnable="True" FontSize="14" ButtonText="" Scale9Enable="True" Scale9Width="60" Scale9Height="60" ctype="ButtonObjectData">
             <Position X="528.1566" Y="140.7656" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -124,9 +124,9 @@
             <TextColor A="255" R="65" G="65" B="70" />
             <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
             <PressedFileData Type="Default" Path="Default/Button_Press.png" />
-            <NormalFileData Type="Default" Path="Default/Button_Normal.png" />
+            <NormalFileData Type="Normal" Path="xia.png" />
           </NodeObjectData>
-          <NodeObjectData Name="downButtonIMD" ActionTag="-1376823290" FrameEvent="" Tag="18" LeftMargin="501.3013" RightMargin="92.6987" TopMargin="856.4523" BottomMargin="243.5477" TouchEnable="True" FontSize="14" ButtonText="||" Scale9Enable="True" Scale9Width="46" Scale9Height="36" ctype="ButtonObjectData">
+          <NodeObjectData Name="downButtonIMD" ActionTag="-1376823290" FrameEvent="" Tag="18" LeftMargin="501.3013" RightMargin="92.6987" TopMargin="856.4523" BottomMargin="243.5477" TouchEnable="True" FontSize="14" ButtonText="" Scale9Enable="True" Scale9Width="60" Scale9Height="60" ctype="ButtonObjectData">
             <Position X="524.3013" Y="261.5477" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -137,7 +137,38 @@
             <TextColor A="255" R="65" G="65" B="70" />
             <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
             <PressedFileData Type="Default" Path="Default/Button_Press.png" />
-            <NormalFileData Type="Default" Path="Default/Button_Normal.png" />
+            <NormalFileData Type="Normal" Path="fast.png" />
+          </NodeObjectData>
+          <NodeObjectData Name="scor_label" ActionTag="1301163875" FrameEvent="" Tag="35" LeftMargin="476.9020" RightMargin="81.0980" TopMargin="520.2878" BottomMargin="573.7122" FontSize="36" LabelText="得 分" ctype="TextObjectData">
+            <Position X="517.9020" Y="594.7122" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <CColor A="255" R="127" G="200" B="22" />
+            <Size X="82.0000" Y="42.0000" />
+            <PrePosition X="0.8092" Y="0.5235" />
+            <PreSize X="0.1328" Y="0.0246" />
+          </NodeObjectData>
+          <NodeObjectData Name="score" ActionTag="965366536" FrameEvent="" Tag="36" LeftMargin="487.9007" RightMargin="92.0993" TopMargin="600.4192" BottomMargin="493.5808" FontSize="36" LabelText="600" ctype="TextObjectData">
+            <Position X="520.3272" Y="514.5803" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <AnchorPoint ScaleX="0.5404" ScaleY="0.5000" />
+            <CColor A="255" R="121" G="160" B="53" />
+            <Size X="60.0000" Y="42.0000" />
+            <PrePosition X="0.8130" Y="0.4530" />
+            <PreSize X="0.0000" Y="0.0000" />
+          </NodeObjectData>
+          <NodeObjectData Name="music" ActionTag="-917578013" FrameEvent="" Tag="39" LeftMargin="560.4622" RightMargin="33.5378" TopMargin="78.9282" BottomMargin="1021.0717" TouchEnable="True" FontSize="14" ButtonText="" Scale9Enable="True" Scale9Width="30" Scale9Height="30" ctype="ButtonObjectData">
+            <Position X="581.0339" Y="1043.9279" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <AnchorPoint ScaleX="0.4472" ScaleY="0.6349" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <Size X="46.0000" Y="36.0000" />
+            <PrePosition X="0.9079" Y="0.9190" />
+            <PreSize X="0.0000" Y="0.0000" />
+            <TextColor A="255" R="65" G="65" B="70" />
+            <DisabledFileData Type="Default" Path="Default/Button_Disable.png" />
+            <PressedFileData Type="Default" Path="Default/Button_Press.png" />
+            <NormalFileData Type="Normal" Path="music_on.png" />
           </NodeObjectData>
         </Children>
       </ObjectData>

@@ -11,7 +11,8 @@
 #include <CocosGUI.h>
 
 #include "GameScene.h"
-
+#include "HeroListScene.h"
+#include "ServerSelect.h"
 
 using namespace cocos2d::ui;
 
@@ -45,9 +46,17 @@ bool MenuScene::init()
     startGame->setTag(ClickTag::START_GAME);
     Text * exitGame = dynamic_cast<Text*>(rootNode->getChildByName("exitGame"));
     exitGame->setTag(ClickTag::EXIT_GAME);
+    Text * startGameDuoblePlayer = dynamic_cast<Text*>(rootNode->getChildByName("startGameDoublePlayer"));
+    startGameDuoblePlayer->setTag(ClickTag::START_GAME_DOUBLE_PLAYER);
+    Text * heroList = dynamic_cast<Text*>(rootNode->getChildByName("heroList"));
+    heroList->setTag(ClickTag::HERO_LIST);
+    
     
     startGame->addClickEventListener(clickCallback);
+    startGameDuoblePlayer->addClickEventListener(clickCallback);
+    heroList->addClickEventListener(clickCallback);
     exitGame->addClickEventListener(clickCallback);
+    
     
     return true;
 }
@@ -59,6 +68,12 @@ void MenuScene::clickCallback(cocos2d::Ref *ref)
     switch (tag) {
         case ClickTag::START_GAME:
             Director::getInstance()->pushScene(TransitionFade::create(0.5, GameScene::createScene()));
+            break;
+        case ClickTag::START_GAME_DOUBLE_PLAYER:
+            Director::getInstance()->pushScene(TransitionFade::create(0.5, ServerSelect::createScene()));
+            break;
+        case ClickTag::HERO_LIST:
+            Director::getInstance()->pushScene(TransitionFade::create(0.5, HeroListScene::createScene()));
             break;
         case ClickTag::EXIT_GAME:
             Director::getInstance()->end();

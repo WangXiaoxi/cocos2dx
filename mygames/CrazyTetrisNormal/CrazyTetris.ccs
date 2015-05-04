@@ -7,6 +7,17 @@
         <Image Name="HelloWorld.png" />
         <Image Name="bg.png" />
         <Project Name="GameScene.csd" Type="Scene" />
+        <Project Name="HeroListScene.csd" Type="Scene" />
+        <Project Name="ServerSelect.csd" Type="Scene" />
+        <Image Name="music_off.png" />
+        <Image Name="music_on.png" />
+        <Image Name="pause.png" />
+        <Image Name="play.png" />
+        <Image Name="fast.png" />
+        <Image Name="next.png" />
+        <Image Name="pre.png" />
+        <Image Name="rotate.png" />
+        <Image Name="xia.png" />
       </RootFolder>
     </Group>
   </SolutionFolder>

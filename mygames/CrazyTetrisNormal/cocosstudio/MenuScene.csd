@@ -22,22 +22,40 @@
             <PreSize X="0.0000" Y="0.0000" />
             <FileData Type="Normal" Path="bg.png" />
           </NodeObjectData>
-          <NodeObjectData Name="startGame" ActionTag="-899014547" FrameEvent="" Tag="8" LeftMargin="204.5000" RightMargin="203.5000" TopMargin="463.0000" BottomMargin="619.0000" TouchEnable="True" FontSize="48" LabelText="StartGame" TouchScaleChangeAble="True" ctype="TextObjectData">
-            <Position X="320.5000" Y="646.0000" />
+          <NodeObjectData Name="startGame" ActionTag="-899014547" FrameEvent="" Tag="8" LeftMargin="220.0736" RightMargin="227.9264" TopMargin="268.2255" BottomMargin="813.7745" TouchEnable="True" FontSize="48" LabelText="单人游戏" TouchScaleChangeAble="True" ctype="TextObjectData">
+            <Position X="316.0736" Y="840.7745" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <CColor A="255" R="58" G="232" B="128" />
-            <Size X="232.0000" Y="54.0000" />
-            <PrePosition X="0.5008" Y="0.5687" />
+            <Size X="192.0000" Y="54.0000" />
+            <PrePosition X="0.4939" Y="0.7401" />
             <PreSize X="0.0000" Y="0.0000" />
           </NodeObjectData>
-          <NodeObjectData Name="exitGame" ActionTag="828844362" FrameEvent="" Tag="9" HorizontalEdge="BothEdge" LeftMargin="267.0000" RightMargin="267.0000" TopMargin="616.0000" BottomMargin="466.0000" TouchEnable="True" FontSize="48" LabelText="Back" TouchScaleChangeAble="True" ctype="TextObjectData">
-            <Position X="320.0000" Y="493.0000" />
+          <NodeObjectData Name="exitGame" ActionTag="828844362" FrameEvent="" Tag="9" HorizontalEdge="BothEdge" LeftMargin="264.7871" RightMargin="269.2129" TopMargin="655.8407" BottomMargin="426.1593" TouchEnable="True" FontSize="48" LabelText="退出游戏" TouchScaleChangeAble="True" ctype="TextObjectData">
+            <Position X="317.7871" Y="453.1593" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <CColor A="255" R="58" G="232" B="128" />
-            <Size X="106.0000" Y="54.0000" />
-            <PrePosition X="0.5000" Y="0.4340" />
+            <Size X="192.0000" Y="54.0000" />
+            <PrePosition X="0.4965" Y="0.3989" />
+            <PreSize X="0.0000" Y="0.0000" />
+          </NodeObjectData>
+          <NodeObjectData Name="startGameDoublePlayer" ActionTag="343831995" FrameEvent="" Tag="18" LeftMargin="223.0257" RightMargin="224.9743" TopMargin="379.5238" BottomMargin="702.4762" TouchEnable="True" FontSize="48" LabelText="双人游戏" TouchScaleChangeAble="True" ctype="TextObjectData">
+            <Position X="319.0257" Y="729.4762" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <CColor A="255" R="58" G="232" B="128" />
+            <Size X="192.0000" Y="54.0000" />
+            <PrePosition X="0.4985" Y="0.6421" />
+            <PreSize X="0.0000" Y="0.0000" />
+          </NodeObjectData>
+          <NodeObjectData Name="heroList" ActionTag="-981795927" FrameEvent="" Tag="19" LeftMargin="245.7860" RightMargin="250.2140" TopMargin="503.3722" BottomMargin="578.6278" TouchEnable="True" FontSize="48" LabelText="英雄榜" TouchScaleChangeAble="True" ctype="TextObjectData">
+            <Position X="317.7860" Y="605.6278" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <CColor A="255" R="58" G="232" B="128" />
+            <Size X="144.0000" Y="54.0000" />
+            <PrePosition X="0.4965" Y="0.5331" />
             <PreSize X="0.0000" Y="0.0000" />
           </NodeObjectData>
         </Children>
