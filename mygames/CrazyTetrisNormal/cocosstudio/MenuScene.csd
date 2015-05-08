@@ -31,7 +31,7 @@
             <PrePosition X="0.4939" Y="0.7401" />
             <PreSize X="0.0000" Y="0.0000" />
           </NodeObjectData>
-          <NodeObjectData Name="exitGame" ActionTag="828844362" FrameEvent="" Tag="9" HorizontalEdge="BothEdge" LeftMargin="264.7871" RightMargin="269.2129" TopMargin="655.8407" BottomMargin="426.1593" TouchEnable="True" FontSize="48" LabelText="退出游戏" TouchScaleChangeAble="True" ctype="TextObjectData">
+          <NodeObjectData Name="exitGame" ActionTag="828844362" FrameEvent="" Tag="9" HorizontalEdge="BothEdge" LeftMargin="221.7871" RightMargin="226.2129" TopMargin="655.8407" BottomMargin="426.1593" TouchEnable="True" FontSize="48" LabelText="退出游戏" TouchScaleChangeAble="True" ctype="TextObjectData">
             <Position X="317.7871" Y="453.1593" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />

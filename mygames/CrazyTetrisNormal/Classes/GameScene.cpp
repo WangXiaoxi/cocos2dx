@@ -10,6 +10,7 @@
 #include <cocostudio/CocoStudio.h>
 #include <CocosGUI.h>
 
+
 /**************************************/
 #include "BlockNode.h"
 #include "IBlock.h"
@@ -32,6 +33,11 @@ __VAR__ -> addClickEventListener(__CLICK_CALLBACK__);
 
 //#define UNIT_WIDTH Director::getInstance()->getVisibleSize().width/10
 #define UNIT_WIDTH gameViewLayer->getContentSize().width/10
+
+
+#define DOWN_EFFECT_FILE        "music_down.wav"  //落下音效
+#define CLEAN_EFFECT_FILE "music_clean.wav" //消除音效
+#define BACKGROUND_MUSIC_FILE        "music_background.mp3"  //音乐
 
 using namespace cocos2d::ui;
 
@@ -77,6 +83,16 @@ bool GameScene::init()
     //timeval 是个结构体，里面有两个变量，一个是以秒为单位的，一个是以微秒为单位的
     unsigned rand_seed = (unsigned)(now.tv_sec*1000+now.tv_usec/1000);
     srand(rand_seed);
+    
+    
+    
+    
+    
+    //音效设置
+    audio = SimpleAudioEngine::getInstance();
+    
+    audio->playBackgroundMusic(BACKGROUND_MUSIC_FILE);
+    
     
     
     
@@ -141,7 +157,21 @@ bool GameScene::init()
                 case DOWN_IMD:
                     currentBlock->moveDownIMD();
                     break;
-                    
+                case MUSIC:
+                    {
+                        musicOn =! musicOn;
+                        if (musicOn)
+                        {
+//                            audio->playBackgroundMusic(BACKGROUND_MUSIC_FILE);
+                            audio->pauseBackgroundMusic();
+                        }else{
+//                            audio->playBackgroundMusic(BACKGROUND_MUSIC_FILE);
+                            audio->resumeBackgroundMusic();
+//                            audio->stopAllEffects();
+//                            audio->stopBackgroundMusic();
+                        }
+                    }
+                    break;
                 default:
                     break;
             }
@@ -155,6 +185,7 @@ bool GameScene::init()
     INIT_BUTTON(btnRotate, rootNode, "rotateButton", ROTATE, btnClickCallback);
     INIT_BUTTON(btnDown, rootNode, "downButton", DOWN, btnClickCallback);
     INIT_BUTTON(btnDownIMD, rootNode, "downButtonIMD", DOWN_IMD, btnClickCallback);
+    INIT_BUTTON(btnMusic, rootNode, "music", MUSIC, btnClickCallback);
 
 //    scheduleUpdate();
     
@@ -218,11 +249,20 @@ void GameScene::blockCollide()
 {
     if (!canMoveDown())
     {
-        fallenNodes->pushBack(*currentBlock->getNodes());
+        auto currentNodes = currentBlock->getNodes();
+        fallenNodes->pushBack(*currentNodes);
+        
+        for (auto it = currentNodes->begin(); it!= currentNodes->end(); it++)
+        {
+            BaseBlock * parent = (BaseBlock*)(*it)->getParent();
+            auto position = gameViewLayer->convertToNodeSpace(parent->getNodeWorldSpace((*it)));
+            (*it)->setPosition(position);
+            gameViewLayer->addChild(*it);
+        }
         
         deleteCompleteLine();
         
-        
+        audio->playEffect(DOWN_EFFECT_FILE);
         addNewBlock();
     }
 }
@@ -233,7 +273,7 @@ bool GameScene::canMoveLeft()
     for (auto it = nodes->begin(); it!=nodes->end(); it++)
     {
         Point position = gameViewLayer->convertToNodeSpace(currentBlock->getNodeWorldSpace((*it)));
-        if (position.x<40)
+        if (position.x<NODE_WIDTH)
         {
             return false;
         }
@@ -246,7 +286,8 @@ bool GameScene::canMoveLeft()
         {
             BaseBlock * fallenParent = (BaseBlock*)(*it)->getParent();
             
-            Vec2 fallenNodePosition = gameViewLayer->convertToNodeSpace(fallenParent->getNodeWorldSpace((*it)));
+//            Vec2 fallenNodePosition = gameViewLayer->convertToNodeSpace(fallenParent->getNodeWorldSpace((*it)));
+            Vec2 fallenNodePosition = gameViewLayer->convertToNodeSpace((*it)->getPosition());
             Vec2 currentNodePosition = gameViewLayer->convertToNodeSpace(currentBlock->getNodeWorldSpace((*c_it)));
             
             Rect fallenNodeBoudingBox = Rect(fallenNodePosition.x-NODE_WIDTH/2, fallenNodePosition.y-NODE_HEIGHT/2, NODE_WIDTH, NODE_HEIGHT);
@@ -277,7 +318,8 @@ bool GameScene::canMoveRight()
     for (auto it = fallenNodes->begin(); it!= fallenNodes->end(); it++)
     {
         BaseBlock * fallenParent = (BaseBlock*)(*it)->getParent();
-        Vec2 fallenNodePosition = gameViewLayer->convertToNodeSpace(fallenParent->getNodeWorldSpace((*it)));
+//        Vec2 fallenNodePosition = gameViewLayer->convertToNodeSpace(fallenParent->getNodeWorldSpace((*it)));
+        Vec2 fallenNodePosition = gameViewLayer->convertToNodeSpace((*it)->getPosition());
         for (auto c_it = tempNodes->begin(); c_it!=tempNodes->end(); c_it++)
         {
             Vec2 currentNodePosition = gameViewLayer->convertToNodeSpace(currentBlock->getNodeWorldSpace((*c_it)));
@@ -311,8 +353,9 @@ bool GameScene::canMoveDown()
         for (auto c_it = tempNodes->begin(); c_it!=tempNodes->end(); c_it++)
         {
             BaseBlock * fallenParent = (BaseBlock*)(*it)->getParent();
-            log("fallenNodes.count%zd",fallenNodes->size());
-            Vec2 fallenNodePosition = gameViewLayer->convertToNodeSpace(fallenParent->getNodeWorldSpace((*it)));
+//            log("fallenNodes.count%zd",fallenNodes->size());
+//            Vec2 fallenNodePosition = gameViewLayer->convertToNodeSpace(fallenParent->getNodeWorldSpace((*it)));
+            Vec2 fallenNodePosition = gameViewLayer->convertToNodeSpace((*it)->getPosition());
             Vec2 currentNodePosition = gameViewLayer->convertToNodeSpace(currentBlock->getNodeWorldSpace((*c_it)));
             if (fabs(currentNodePosition.x-fallenNodePosition.x)>20)
             {
@@ -334,22 +377,29 @@ void GameScene::deleteCompleteLine()
     
     for (int i=0; i<20; i++)
     {
+//        lines[i] = new Vector<BlockNode*>;
         lines[i] = new Vector<BlockNode*>;
     }
     
-    
-    for (auto it = fallenNodes->begin(); it!=fallenNodes->end(); it++)
+//    int i = 11;
+    for (auto it = fallenNodes->begin(); it!=fallenNodes->end();it++)
     {
-        BaseBlock * parentBlock = (BaseBlock*)(*it)->getParent();
+//        (*it)->setTag(i++);
+//        BaseBlock * parentBlock = (BaseBlock*)(*it)->getParent();
         
 //        int row = (gameViewLayer->convertToNodeSpace(parentBlock->getNodeWorldSpace((*it))).x + 0.5) / NODE_WIDTH;
-        int y = (gameViewLayer->convertToNodeSpace(parentBlock->getNodeWorldSpace((*it))).y + 0.5) ;
+//        int y = (gameViewLayer->convertToNodeSpace(parentBlock->getNodeWorldSpace((*it))).y + 0.5) ;
+//        int y = gameViewLayer->convertToNodeSpace((*it)->getPosition()).y+0.5;
+        int y = (*it)->getPosition().y+0.5;
         int height =  NODE_HEIGHT;
         int line = y/height;
 //        log("y:%d , height:%d , line:%d",y,height,line);
 //        log("line:%d",line);
 //        int result = 60/40;
 //        log("60/40=:%d",result);
+//        lines[line]->pushBack((*it));
+
+        
         lines[line]->pushBack((*it));
 //        log("lines[%d].size:%d",line,lines[line]->size());
     }
@@ -359,10 +409,12 @@ void GameScene::deleteCompleteLine()
         log("line[%d].count:%zd",i,lines[i]->size());
         if (lines[i]->size()>9)
         {
-            
+            //播放消除音效
+            audio->playEffect(CLEAN_EFFECT_FILE);
             for (auto it = lines[i]->begin(); it!=lines[i]->end(); it++)
             {
                 (*it)->removeFromParent();
+//                (*it)->moveDown();
                 log("888888888888");
 //                if (i<19)
 //                {
@@ -373,6 +425,9 @@ void GameScene::deleteCompleteLine()
 //                    lines[i]->clear();
 //                }
             }
+        }else
+        {
+//            fallenNodes->pushBack(*lines[i]);
         }
         
     }
@@ -405,7 +460,6 @@ bool GameScene::isOutofGameView()
 void GameScene::addNewBlock()
 {
     currentBlock->setBlockSchedule(BLOCK_STOP);
-//    currentBlock->removeFromParent();
     currentBlock = createNewBlock(nextBlock);
     currentBlock->setPosition(currentBlock->getBornPosition());
     currentBlock->setScale(1);
@@ -448,6 +502,11 @@ void GameScene::gameReStart()
 }
 void GameScene::gameBack()
 {
+    //停止背景音乐的播放
+    audio->stopBackgroundMusic();
+    //停止所有音效
+    audio->stopAllEffects();
+    //弹出当前游戏场景
     Director::getInstance()->popScene();
 }
 

@@ -15,17 +15,22 @@
 #include "BaseBlock.h"
 
 #include "MacroData.h"
-
+#include <cocos/audio/include/SimpleAudioEngine.h>
 USING_NS_CC;
 
 
 using namespace cocos2d::ui;
+using namespace CocosDenshion;
 
 class GameScene : public Layer {
 //游戏属性
 private:
-    float BLOCK_STOP = 0;
-    float BLOCK_SPEED = 1;
+    float BLOCK_STOP = 0;   //方块停止
+    float BLOCK_SPEED = 1;  //方块下落速度
+    
+private:
+    SimpleAudioEngine * audio;//音乐播放引擎
+    bool musicOn = true;
     
 private:
     
@@ -56,6 +61,7 @@ private:
     Button * btnRotate;         //旋转
     Button * btnDown;           //加速下落
     Button * btnDownIMD;        //立即下落
+    Button * btnMusic;          //音效控制
     
     Layer * gameViewLayer; //游戏区域Layer
     
@@ -95,7 +101,8 @@ public:
         LEFT,
         ROTATE,
         DOWN,
-        DOWN_IMD
+        DOWN_IMD,
+        MUSIC
     };
     
 public:
