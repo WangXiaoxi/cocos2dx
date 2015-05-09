@@ -9,15 +9,14 @@
 #ifndef __CrazyTetris__HeroListScene__
 #define __CrazyTetris__HeroListScene__
 
-#include <stdio.h>
 #include <cocos2d.h>
-#include <CocosGUI.h>
-#include <cocostudio/CocoStudio.h>
+#include "Ranking.h"
 
 USING_NS_CC;
 
 class HeroListScene : public Layer {
     
+
 public:
     
     static Scene * createScene();

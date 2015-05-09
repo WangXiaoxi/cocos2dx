@@ -53,6 +53,8 @@ private:
     //游戏暂停状态
     bool running = true;
 private:
+    int score=0;                //得分
+    Text * scoreText;           //积分板
     
     Button * btnPause;          //暂停
     Button * btnBack;           //返回
@@ -83,9 +85,16 @@ public:
     void deleteCompleteLine();
     //检测是否游戏结束
     bool isGameOver();
+    //更新分数
+    void updateScore(int);
+    //加载英雄榜
+    void loadRankingData();
+    //更新英雄榜
+    void updateRanking();
     //游戏界面外
     virtual bool isOutofGameView();
 public:
+    
     void gameStart();
     void update(float);
     void gamePause();

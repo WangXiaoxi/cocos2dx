@@ -48,7 +48,7 @@
             <EndColor A="255" R="255" G="255" B="255" />
             <ColorVector ScaleY="1.0000" />
           </NodeObjectData>
-          <NodeObjectData Name="pauseButton" ActionTag="-1464623615" FrameEvent="" Tag="12" LeftMargin="459.6133" RightMargin="134.3867" TopMargin="81.3596" BottomMargin="1018.6403" TouchEnable="True" FontSize="14" ButtonText="" Scale9Enable="True" Scale9Width="30" Scale9Height="30" ctype="ButtonObjectData">
+          <NodeObjectData Name="pauseButton" ActionTag="-1464623615" FrameEvent="" Tag="12" LeftMargin="459.6145" RightMargin="134.3855" TopMargin="81.3593" BottomMargin="1018.6407" TouchEnable="True" FontSize="14" ButtonText="" Scale9Enable="True" Scale9Width="30" Scale9Height="30" ctype="ButtonObjectData">
             <Position X="486.3359" Y="1034.2216" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5809" ScaleY="0.4328" />
@@ -148,7 +148,7 @@
             <PrePosition X="0.8092" Y="0.5235" />
             <PreSize X="0.1328" Y="0.0246" />
           </NodeObjectData>
-          <NodeObjectData Name="score" ActionTag="965366536" FrameEvent="" Tag="36" LeftMargin="487.9007" RightMargin="92.0993" TopMargin="600.4192" BottomMargin="493.5808" FontSize="36" LabelText="600" ctype="TextObjectData">
+          <NodeObjectData Name="score" ActionTag="965366536" FrameEvent="" Tag="36" LeftMargin="487.9032" RightMargin="92.0968" TopMargin="600.4197" BottomMargin="493.5803" FontSize="36" LabelText="600" ctype="TextObjectData">
             <Position X="520.3272" Y="514.5803" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.5404" ScaleY="0.5000" />
@@ -157,7 +157,7 @@
             <PrePosition X="0.8130" Y="0.4530" />
             <PreSize X="0.0000" Y="0.0000" />
           </NodeObjectData>
-          <NodeObjectData Name="music" ActionTag="-917578013" FrameEvent="" Tag="39" LeftMargin="560.4622" RightMargin="33.5378" TopMargin="78.9282" BottomMargin="1021.0717" TouchEnable="True" FontSize="14" ButtonText="" Scale9Enable="True" Scale9Width="30" Scale9Height="30" ctype="ButtonObjectData">
+          <NodeObjectData Name="music" ActionTag="-917578013" FrameEvent="" Tag="39" LeftMargin="560.4626" RightMargin="33.5374" TopMargin="78.9286" BottomMargin="1021.0715" TouchEnable="True" FontSize="14" ButtonText="" Scale9Enable="True" Scale9Width="30" Scale9Height="30" ctype="ButtonObjectData">
             <Position X="581.0339" Y="1043.9279" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <AnchorPoint ScaleX="0.4472" ScaleY="0.6349" />

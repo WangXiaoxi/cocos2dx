@@ -20,6 +20,7 @@
 #include "ZBlock.h"
 #include "RZBlock.h"
 #include "TBlock.h"
+#include "Ranking.h"
 /**************************************/
 
 #define INIT_BUTTON(__VAR__,__ROOT__,__NAME__,__TAG__,__CLICK_CALLBACK__) \
@@ -38,6 +39,9 @@ __VAR__ -> addClickEventListener(__CLICK_CALLBACK__);
 #define DOWN_EFFECT_FILE        "music_down.wav"  //落下音效
 #define CLEAN_EFFECT_FILE "music_clean.wav" //消除音效
 #define BACKGROUND_MUSIC_FILE        "music_background.mp3"  //音乐
+
+#define ADD_SCORE_A 2   //落下一个方块2分
+#define ADD_SCORE_B 10  //消除一行方块10分
 
 using namespace cocos2d::ui;
 
@@ -156,6 +160,8 @@ bool GameScene::init()
                     break;
                 case DOWN_IMD:
                     currentBlock->moveDownIMD();
+//                    currentBlock->unscheduleUpdate();
+//                    currentBlock->setBlockSchedule(BLOCK_STOP);
                     break;
                 case MUSIC:
                     {
@@ -186,7 +192,9 @@ bool GameScene::init()
     INIT_BUTTON(btnDown, rootNode, "downButton", DOWN, btnClickCallback);
     INIT_BUTTON(btnDownIMD, rootNode, "downButtonIMD", DOWN_IMD, btnClickCallback);
     INIT_BUTTON(btnMusic, rootNode, "music", MUSIC, btnClickCallback);
-
+    //初始化计分板
+    scoreText = dynamic_cast<Text*>(rootNode->getChildByName("score"));
+    updateScore(0);
 //    scheduleUpdate();
     
     gameStart();
@@ -194,6 +202,12 @@ bool GameScene::init()
     return true;
 }
 
+void GameScene::updateScore(int score_i)
+{
+    score = score + score_i;
+    auto scoreString = StringUtils::format("%d",score);
+    scoreText->setString(scoreString);
+}
 
 BaseBlock * GameScene::createNewBlock(BaseBlock* oriBlock)
 {
@@ -249,21 +263,35 @@ void GameScene::blockCollide()
 {
     if (!canMoveDown())
     {
+        //停止当前大方块
+        currentBlock->setBlockSchedule(BLOCK_STOP);
+        //将当前大方块中节点取出，并有节点计数器记录
         auto currentNodes = currentBlock->getNodes();
         fallenNodes->pushBack(*currentNodes);
         
         for (auto it = currentNodes->begin(); it!= currentNodes->end(); it++)
         {
             BaseBlock * parent = (BaseBlock*)(*it)->getParent();
+            //把小方块在父级载体中的坐标转化为相对于游戏区域内的坐标
             auto position = gameViewLayer->convertToNodeSpace(parent->getNodeWorldSpace((*it)));
+            //调整小方块在游戏区域的位置
             (*it)->setPosition(position);
+            //将小方块转移到游戏区
             gameViewLayer->addChild(*it);
         }
-        
-        deleteCompleteLine();
-        
+        //加两分
+        updateScore(ADD_SCORE_A);
+        //播放音效
         audio->playEffect(DOWN_EFFECT_FILE);
-        addNewBlock();
+        //移除父级载体，释放资源
+        currentBlock->removeFromParentAndCleanup(true);
+        if (!isGameOver())
+        {
+            //判断消除行
+            deleteCompleteLine();
+            //添加新方块
+            addNewBlock();
+        }
     }
 }
 
@@ -284,19 +312,14 @@ bool GameScene::canMoveLeft()
     {
         for (auto c_it = tempNodes->begin(); c_it!=tempNodes->end(); c_it++)
         {
-            BaseBlock * fallenParent = (BaseBlock*)(*it)->getParent();
-            
-//            Vec2 fallenNodePosition = gameViewLayer->convertToNodeSpace(fallenParent->getNodeWorldSpace((*it)));
-            Vec2 fallenNodePosition = gameViewLayer->convertToNodeSpace((*it)->getPosition());
+            Vec2 fallenNodePosition = (*it)->getPosition();
             Vec2 currentNodePosition = gameViewLayer->convertToNodeSpace(currentBlock->getNodeWorldSpace((*c_it)));
             
             Rect fallenNodeBoudingBox = Rect(fallenNodePosition.x-NODE_WIDTH/2, fallenNodePosition.y-NODE_HEIGHT/2, NODE_WIDTH, NODE_HEIGHT);
             if (fallenNodeBoudingBox.containsPoint(currentNodePosition-Vec2(NODE_WIDTH, 0)))
             {
-//                currentBlock->moveRight();
                 return false;
             }
-            
         }
     }
     return true;
@@ -317,9 +340,7 @@ bool GameScene::canMoveRight()
     auto tempNodes = currentBlock->getNodes();
     for (auto it = fallenNodes->begin(); it!= fallenNodes->end(); it++)
     {
-        BaseBlock * fallenParent = (BaseBlock*)(*it)->getParent();
-//        Vec2 fallenNodePosition = gameViewLayer->convertToNodeSpace(fallenParent->getNodeWorldSpace((*it)));
-        Vec2 fallenNodePosition = gameViewLayer->convertToNodeSpace((*it)->getPosition());
+        Vec2 fallenNodePosition = (*it)->getPosition();
         for (auto c_it = tempNodes->begin(); c_it!=tempNodes->end(); c_it++)
         {
             Vec2 currentNodePosition = gameViewLayer->convertToNodeSpace(currentBlock->getNodeWorldSpace((*c_it)));
@@ -352,10 +373,7 @@ bool GameScene::canMoveDown()
 
         for (auto c_it = tempNodes->begin(); c_it!=tempNodes->end(); c_it++)
         {
-            BaseBlock * fallenParent = (BaseBlock*)(*it)->getParent();
-//            log("fallenNodes.count%zd",fallenNodes->size());
-//            Vec2 fallenNodePosition = gameViewLayer->convertToNodeSpace(fallenParent->getNodeWorldSpace((*it)));
-            Vec2 fallenNodePosition = gameViewLayer->convertToNodeSpace((*it)->getPosition());
+            Vec2 fallenNodePosition = (*it)->getPosition();
             Vec2 currentNodePosition = gameViewLayer->convertToNodeSpace(currentBlock->getNodeWorldSpace((*c_it)));
             if (fabs(currentNodePosition.x-fallenNodePosition.x)>20)
             {
@@ -374,71 +392,126 @@ bool GameScene::canMoveDown()
 
 void GameScene::deleteCompleteLine()
 {
-    
+    //lines为屏幕中行数，共20行，这里初始化行数
     for (int i=0; i<20; i++)
     {
-//        lines[i] = new Vector<BlockNode*>;
         lines[i] = new Vector<BlockNode*>;
     }
     
-//    int i = 11;
+    //遍历所有已落下方块，根据坐标计算所在行，并添加至行数计数器lines中
     for (auto it = fallenNodes->begin(); it!=fallenNodes->end();it++)
     {
-//        (*it)->setTag(i++);
-//        BaseBlock * parentBlock = (BaseBlock*)(*it)->getParent();
-        
-//        int row = (gameViewLayer->convertToNodeSpace(parentBlock->getNodeWorldSpace((*it))).x + 0.5) / NODE_WIDTH;
-//        int y = (gameViewLayer->convertToNodeSpace(parentBlock->getNodeWorldSpace((*it))).y + 0.5) ;
-//        int y = gameViewLayer->convertToNodeSpace((*it)->getPosition()).y+0.5;
+        //获取方块节点的y轴坐标 注：这里貌似是cocos2d-x的bug，若直接计算则会出现错误。
         int y = (*it)->getPosition().y+0.5;
+        //单元格高度
         int height =  NODE_HEIGHT;
+        //得到行数
         int line = y/height;
-//        log("y:%d , height:%d , line:%d",y,height,line);
-//        log("line:%d",line);
-//        int result = 60/40;
-//        log("60/40=:%d",result);
-//        lines[line]->pushBack((*it));
-
-        
+        //添加至行数计数器
         lines[line]->pushBack((*it));
-//        log("lines[%d].size:%d",line,lines[line]->size());
     }
     
+    //判断每一行是否填满了小方块
     for (int i = 0; i < 20; i++)
     {
         log("line[%d].count:%zd",i,lines[i]->size());
+        //每行最多容纳10个小方块，装满则消除
         if (lines[i]->size()>9)
         {
             //播放消除音效
             audio->playEffect(CLEAN_EFFECT_FILE);
+            //对本行方块逐个消除
             for (auto it = lines[i]->begin(); it!=lines[i]->end(); it++)
             {
-                (*it)->removeFromParent();
-//                (*it)->moveDown();
-                log("888888888888");
-//                if (i<19)
-//                {
-//                    for (auto iit = lines[i+1]->begin(); iit!=lines[i+1]->end() ; iit++)
-//                    {
-//                        (*iit)->moveDown();
-//                    }
-//                    lines[i]->clear();
-//                }
+                //从当前屏幕中移除，且移出方块计数器
+                gameViewLayer->removeChild(*it);
+                fallenNodes->eraseObject(*it);
             }
-        }else
-        {
-//            fallenNodes->pushBack(*lines[i]);
+            //消除一次加十分
+            updateScore(ADD_SCORE_B);
+            //释放消除方块资源
+            lines[i]->clear();
+            //将消除行以上的方块全部向下移动
+            for (int j=19; j>i; j--)
+            {
+                for (auto itt = lines[j]->begin(); itt!=lines[j]->end(); itt++)
+                {
+                    (*itt)->moveDown();
+                }
+            }
         }
-        
+        //释放当前行数计数器资源
+        lines[i]->clear();
     }
     
-    
-    
+}
+
+bool UDgreater ( int elem1, int elem2 )
+{
+    return elem1 > elem2;
 }
 
 bool GameScene::isGameOver()
 {
-    return true;
+    //如果已落下的方块中，y轴坐标超出了游戏区域，则游戏结束
+    for (auto it = fallenNodes->begin(); it!=fallenNodes->end(); it++)
+    {
+        if (((*it)->getPosition().y - GAME_VIEW_HEIGHT)>0.0)
+        {
+            log("Game Over!");
+            //取消定时器
+            unscheduleUpdate();
+            Layer * layer = Layer::create();
+            layer->setContentSize(Director::getInstance()->getWinSize());
+            std::string name = "game_over.jpg";
+            Sprite * over = Sprite::create(name);
+            over->setPosition(layer->getContentSize()/2);
+            over->setScale(0.35);
+            layer->addChild(over);
+            addChild(layer);
+            
+            auto listener = EventListenerTouchOneByOne::create();
+            listener->onTouchBegan = [](Touch*t,Event*e){
+                Director::getInstance()->popScene();
+                return false;};
+            _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, over);
+            
+            
+            //保存分数
+            
+            auto ranking = Ranking::getRankingData();
+            
+            int arr[9];
+            for (int i=0; i<8; i++)
+            {
+                arr[i]=ranking.at(i).asInt();
+            }
+            ranking.clear();
+            arr[8]=score;
+            
+            for(int i = 0;i < 9;i++){
+                //比较两个相邻的元素
+                for(int j = 0;j < 9-i-1;j++){
+                    if(arr[j] < arr[j+1]){
+                        int t = arr[j];
+                        arr[j] = arr[j+1];
+                        arr[j+1] = t;
+                    }  
+                }  
+            }
+            
+            
+            for (int i = 0; i<8; i++)
+            {
+                ranking.push_back(Value(arr[i]));
+            }
+            
+            Ranking::updateRankingData(ranking);
+            
+            return true;
+        }
+    }
+    return false;
 }
 
 bool GameScene::isOutofGameView()
@@ -459,7 +532,6 @@ bool GameScene::isOutofGameView()
 
 void GameScene::addNewBlock()
 {
-    currentBlock->setBlockSchedule(BLOCK_STOP);
     currentBlock = createNewBlock(nextBlock);
     currentBlock->setPosition(currentBlock->getBornPosition());
     currentBlock->setScale(1);
@@ -475,7 +547,6 @@ void GameScene::addNewBlock()
 
 void GameScene::gameStart()
 {
-//    schedule(schedule_selector(GameScene::update), 1);
     scheduleUpdate();
     nextBlock = createNewBlock(nullptr);
     nextBlock->setPosition(nextBlockPosition);
@@ -493,12 +564,16 @@ void GameScene::gameStart()
 void GameScene::gamePause()
 {
     log("pause");
-    Director::getInstance()->pause();
+    unscheduleUpdate();
+    currentBlock->setBlockSchedule(BLOCK_STOP);
+
+//    Director::getInstance()->pause();
 //    world->getAllBodies()
 }
 void GameScene::gameReStart()
 {
-    Director::getInstance()->resume();
+    scheduleUpdate();
+    currentBlock->setBlockSchedule(BLOCK_SPEED);
 }
 void GameScene::gameBack()
 {
@@ -512,8 +587,5 @@ void GameScene::gameBack()
 
 void GameScene::update(float delta)
 {
-//    auto nodes = currentBlock->getNodes();
-//    Vec2 vec1 = gameViewLayer-> (currentBlock->getNodeWorldSpace(nodes->at(0)));
-//    log("node1.x:%f,node1.y%f",vec1.x,vec1.y);
     blockCollide();
 }
