@@ -12,6 +12,10 @@
 		1E4146BB8C923CA52DB7FFF8 /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C64C27B51AFFE8FF5464D4 /* libcocos2d iOS.a */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		3F0F4FE7BFD23C718A7344DE /* res in Resources */ = {isa = PBXBuildFile; fileRef = 0F3A4B559B3019F2C7B0E080 /* res */; };
+		40656F131AFED17900391947 /* ODSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40656F0D1AFED17900391947 /* ODSocket.cpp */; };
+		40656F141AFED17900391947 /* ODSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40656F0D1AFED17900391947 /* ODSocket.cpp */; };
+		40656F151AFED17900391947 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40656F0F1AFED17900391947 /* stdafx.cpp */; };
+		40656F161AFED17900391947 /* stdafx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40656F0F1AFED17900391947 /* stdafx.cpp */; };
 		409020AE1AFEA57800ACD44B /* Ranking.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 409020AC1AFEA57800ACD44B /* Ranking.cpp */; };
 		409020AF1AFEA57800ACD44B /* Ranking.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 409020AC1AFEA57800ACD44B /* Ranking.cpp */; };
 		4096D2CE1AF10537007B8BEE /* HeroListScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4096D2CC1AF10537007B8BEE /* HeroListScene.cpp */; };
@@ -96,6 +100,12 @@
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		36C64C27B51AFFE8FF5464D4 /* libcocos2d iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcocos2d iOS.a"; path = "/Applications/Cocos/frameworks/cocos2d-x-3.4/prebuilt/ios/libcocos2d iOS.a"; sourceTree = "<absolute>"; };
+		40656F0D1AFED17900391947 /* ODSocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ODSocket.cpp; path = ODSocket/ODSocket.cpp; sourceTree = "<group>"; };
+		40656F0E1AFED17900391947 /* ODSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ODSocket.h; path = ODSocket/ODSocket.h; sourceTree = "<group>"; };
+		40656F0F1AFED17900391947 /* stdafx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = stdafx.cpp; path = ODSocket/stdafx.cpp; sourceTree = "<group>"; };
+		40656F101AFED17900391947 /* stdafx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stdafx.h; path = ODSocket/stdafx.h; sourceTree = "<group>"; };
+		40656F111AFED17900391947 /* targetver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = targetver.h; path = ODSocket/targetver.h; sourceTree = "<group>"; };
+		40656F121AFED17900391947 /* tchar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tchar.h; path = ODSocket/tchar.h; sourceTree = "<group>"; };
 		409020AC1AFEA57800ACD44B /* Ranking.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ranking.cpp; sourceTree = "<group>"; };
 		409020AD1AFEA57800ACD44B /* Ranking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ranking.h; sourceTree = "<group>"; };
 		4096D2CC1AF10537007B8BEE /* HeroListScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HeroListScene.cpp; sourceTree = "<group>"; };
@@ -284,6 +294,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		40656F0C1AFED16800391947 /* ODSocket */ = {
+			isa = PBXGroup;
+			children = (
+				40656F0D1AFED17900391947 /* ODSocket.cpp */,
+				40656F0E1AFED17900391947 /* ODSocket.h */,
+				40656F0F1AFED17900391947 /* stdafx.cpp */,
+				40656F101AFED17900391947 /* stdafx.h */,
+				40656F111AFED17900391947 /* targetver.h */,
+				40656F121AFED17900391947 /* tchar.h */,
+			);
+			name = ODSocket;
+			sourceTree = "<group>";
+		};
 		409020A91AFEA51700ACD44B /* 游戏菜单 */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +348,7 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				40656F0C1AFED16800391947 /* ODSocket */,
 				4A28ADE51AD65B0300DF9A70 /* TetrisBlocks */,
 				409020A91AFEA51700ACD44B /* 游戏菜单 */,
 				409020AA1AFEA53700ACD44B /* 游戏场景 */,
@@ -554,11 +578,13 @@
 				4A28ADC61AD65A5100DF9A70 /* GameScene.cpp in Sources */,
 				4A28ADDF1AD65AF600DF9A70 /* RZBlock.cpp in Sources */,
 				4A28ADEA1AD65B2000DF9A70 /* BaseBlock.cpp in Sources */,
+				40656F151AFED17900391947 /* stdafx.cpp in Sources */,
 				4A28ADDD1AD65AF600DF9A70 /* RLBlock.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				4A28ADE31AD65AF600DF9A70 /* ZBlock.cpp in Sources */,
 				4096D2CE1AF10537007B8BEE /* HeroListScene.cpp in Sources */,
+				40656F131AFED17900391947 /* ODSocket.cpp in Sources */,
 				4A28ADD71AD65AF600DF9A70 /* IBlock.cpp in Sources */,
 				4A28ADEC1AD65B2000DF9A70 /* BlockNode.cpp in Sources */,
 			);
@@ -579,6 +605,8 @@
 				4096D2D31AF1B43E007B8BEE /* ServerSelect.cpp in Sources */,
 				4096D2CF1AF10537007B8BEE /* HeroListScene.cpp in Sources */,
 				4A28ADE41AD65AF600DF9A70 /* ZBlock.cpp in Sources */,
+				40656F141AFED17900391947 /* ODSocket.cpp in Sources */,
+				40656F161AFED17900391947 /* stdafx.cpp in Sources */,
 				4A28ADED1AD65B2000DF9A70 /* BlockNode.cpp in Sources */,
 				4A28ADDA1AD65AF600DF9A70 /* LBlock.cpp in Sources */,
 				4A28ADEB1AD65B2000DF9A70 /* BaseBlock.cpp in Sources */,

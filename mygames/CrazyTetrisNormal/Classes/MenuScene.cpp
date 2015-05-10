@@ -67,10 +67,16 @@ void MenuScene::clickCallback(cocos2d::Ref *ref)
     int tag = node->getTag();
     switch (tag) {
         case ClickTag::START_GAME:
+        {
+            UserDefault::getInstance()->setBoolForKey("isNetWork", false);
             Director::getInstance()->pushScene(TransitionFade::create(0.5, GameScene::createScene()));
+        }
             break;
         case ClickTag::START_GAME_DOUBLE_PLAYER:
+        {
+            UserDefault::getInstance()->setBoolForKey("isNetWork", true);
             Director::getInstance()->pushScene(TransitionFade::create(0.5, ServerSelect::createScene()));
+        }
             break;
         case ClickTag::HERO_LIST:
             Director::getInstance()->pushScene(TransitionFade::create(0.5, HeroListScene::createScene()));

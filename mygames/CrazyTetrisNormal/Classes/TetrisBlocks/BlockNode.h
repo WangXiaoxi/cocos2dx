@@ -30,6 +30,7 @@ public:
     virtual bool initWithArgs(Color4F color);
     bool setNodeColor(Color3B color);
     virtual bool moveDown();
+    virtual bool moveUp();
     CREATE_FUNC(BlockNode);
 };
 

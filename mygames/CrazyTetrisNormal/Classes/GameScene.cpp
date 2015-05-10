@@ -9,8 +9,6 @@
 #include "GameScene.h"
 #include <cocostudio/CocoStudio.h>
 #include <CocosGUI.h>
-
-
 /**************************************/
 #include "BlockNode.h"
 #include "IBlock.h"
@@ -22,6 +20,9 @@
 #include "TBlock.h"
 #include "Ranking.h"
 /**************************************/
+
+#define SERVER_IP "127.0.0.1"
+#define PORT 12345
 
 #define INIT_BUTTON(__VAR__,__ROOT__,__NAME__,__TAG__,__CLICK_CALLBACK__) \
 __VAR__ = static_cast<Button*>(__ROOT__->getChildByName(__NAME__)); \
@@ -133,7 +134,7 @@ bool GameScene::init()
                     break;
                 case LEFT:
                     {
-                        if (canMoveLeft())
+                        if (canMoveLeft()&&currentBlock)
                         {
                             currentBlock->moveLeft();
                         }
@@ -141,25 +142,36 @@ bool GameScene::init()
                     break;
                 case RIGHT:
                     {
-                        if (canMoveRight())
+                        if (canMoveRight()&&currentBlock)
                         {
                             currentBlock->moveRight();
                         }
                     }
                     break;
                 case ROTATE:
-                    currentBlock->setRotation90();
-                    break;
+                    {
+                        if (currentBlock)
+                        {
+                            currentBlock->setRotation90();
+                        }
+                        break;
+                    }
                 case DOWN:
                     {
-                        if (canMoveDown())
+                        if (canMoveDown()&&currentBlock)
                         {
                             currentBlock->moveDown();
                         }
                     }
                     break;
                 case DOWN_IMD:
-                    currentBlock->moveDownIMD();
+                    {
+                        if (currentBlock)
+                        {
+//                            currentBlock->moveDownIMD();
+                            this->addBottmBlocks();
+                        }
+                    }
 //                    currentBlock->unscheduleUpdate();
 //                    currentBlock->setBlockSchedule(BLOCK_STOP);
                     break;
@@ -197,7 +209,18 @@ bool GameScene::init()
     updateScore(0);
 //    scheduleUpdate();
     
-    gameStart();
+    isNetWork = UserDefault::getInstance()->getBoolForKey("isNetWork", false);
+    if (isNetWork)
+    {
+        Label * label = Label::createWithSystemFont("正在连接服务器，请耐心等待。。。", "", 50);
+        label->setPosition(Vec2(320,480));
+        gameViewLayer->addChild(label);
+        
+    }else{
+        
+        gameStart();
+    
+    }
     
     return true;
 }
@@ -429,6 +452,11 @@ void GameScene::deleteCompleteLine()
             }
             //消除一次加十分
             updateScore(ADD_SCORE_B);
+            if (isNetWork)
+            {   //若为对战模式，发送增加方块消息
+//                addBottmBlocks();
+                sendData();
+            }
             //释放消除方块资源
             lines[i]->clear();
             //将消除行以上的方块全部向下移动
@@ -446,10 +474,6 @@ void GameScene::deleteCompleteLine()
     
 }
 
-bool UDgreater ( int elem1, int elem2 )
-{
-    return elem1 > elem2;
-}
 
 bool GameScene::isGameOver()
 {
@@ -584,8 +608,82 @@ void GameScene::gameBack()
     //弹出当前游戏场景
     Director::getInstance()->popScene();
 }
-
+//定时器
 void GameScene::update(float delta)
 {
     blockCollide();
+}
+
+
+void GameScene::addBottmBlocks()
+{
+    for (auto it = fallenNodes->begin(); it!=fallenNodes->end(); it++)
+    {
+        (*it)->moveUp();
+    }
+
+    for (int i = 0; i<10; i++)
+    {
+        if (i%2)
+        {
+            continue;
+        }
+        auto node = BlockNode::create();
+        node->initWithArgs("红色.png");
+        node->setPosition(Vec2(NODE_WIDTH*i+NODE_WIDTH/2,NODE_HEIGHT/2));
+        gameViewLayer->addChild(node);
+        fallenNodes->pushBack(node);
+    }
+}
+bool GameScene::connectServer()
+{
+    // 初始化
+    // ODSocket socket;
+    socket.Init();
+    socket.Create(AF_INET, SOCK_STREAM, 0);
+    
+    // 设置服务器的IP地址，端口号
+    // 并连接服务器 Connect
+//    const char* ip = "127.0.0.1";
+//    int port = 12345;
+    bool result = socket.Connect(SERVER_IP  , PORT);
+    
+    // 发送数据 Send
+//    socket.Send("login", 5);
+    
+    if (result) {
+        CCLOG("connect to server success!");
+        // 开启新线程，在子线程中，接收数据
+        std::thread recvThread = std::thread(&GameScene::receiveData, this);
+        recvThread.detach(); // 从主线程分离
+        return true;
+    }
+    else {
+        CCLOG("can not connect to server");
+        return false;
+    }
+}
+
+void GameScene::sendData()
+{
+    socket.Send("1", 1);
+}
+
+void GameScene::receiveData()
+{
+    // 因为是强联网
+    // 所以可以一直检测服务端是否有数据传来
+    while (true)
+    {
+        // 接收数据 Recv
+        char data[512] = "";
+        int result = socket.Recv(data, 512, 0);
+        printf("%d", result);
+        // 与服务器的连接断开了
+        if (result <= 0) break;
+        CCLOG("%s", data);
+    }
+    // 关闭连接
+    socket.Close();
+    gameBack();
 }

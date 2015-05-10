@@ -120,7 +120,10 @@ void BaseBlock::moveDown()
 
 void BaseBlock::moveDownIMD()
 {
-    setPosition(getPosition()+Point(0,NODE_HEIGHT));
+    while (1)
+    {
+        moveDown();
+    }
 }
 
 Point BaseBlock::getNodeWorldSpace(BlockNode*node)

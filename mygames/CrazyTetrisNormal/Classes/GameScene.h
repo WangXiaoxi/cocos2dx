@@ -13,7 +13,7 @@
 #include <CocosGUI.h>
 
 #include "BaseBlock.h"
-
+#include "ODSocket/ODSocket.h"
 #include "MacroData.h"
 #include <cocos/audio/include/SimpleAudioEngine.h>
 USING_NS_CC;
@@ -74,6 +74,13 @@ private:
     bool canMoveLeft();
     bool canMoveRight();
     bool canMoveDown();
+    //网络连接
+public:
+    ODSocket socket;
+    bool isNetWork;
+    bool connectServer();
+    void receiveData();
+    void sendData();
 public:
     //添加一个新的方块
     void addNewBlock();
@@ -93,6 +100,9 @@ public:
     void updateRanking();
     //游戏界面外
     virtual bool isOutofGameView();
+    //添加一行新的方块
+    virtual void addBottmBlocks();
+
 public:
     
     void gameStart();

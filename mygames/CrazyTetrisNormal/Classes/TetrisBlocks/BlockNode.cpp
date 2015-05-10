@@ -51,5 +51,9 @@ bool BlockNode::moveDown()
     setPosition(getPosition()-Vec2(0, NODE_HEIGHT));
     return true;
 }
-
+bool BlockNode::moveUp()
+{
+    setPosition(getPosition()+Vec2(0, NODE_HEIGHT));
+    return true;
+}
 
