@@ -57,8 +57,7 @@ Scene * GameScene::createScene()
     
     return scene;
 }
-
-//画出背景上的灰色格子
+#pragma mark -画出背景上的灰色格子
 void drawGameLayerLines(Layer * gameLayer)
 {
     DrawNode * drawNode = DrawNode::create();
@@ -89,21 +88,13 @@ bool GameScene::init()
     unsigned rand_seed = (unsigned)(now.tv_sec*1000+now.tv_usec/1000);
     srand(rand_seed);
     
-    
-    
-    
-    
+#pragma mark - 音效
     //音效设置
     audio = SimpleAudioEngine::getInstance();
-    
     audio->playBackgroundMusic(BACKGROUND_MUSIC_FILE);
-    
-    
-    
     
     fallenNodes = new Vector<BlockNode*>;
 //    fallen = new Vector<Vector<BlockNode*>*>;
-   
     
     //游戏数据初始化
     visibleSize = Director::getInstance()->getVisibleSize();
@@ -118,6 +109,7 @@ bool GameScene::init()
     nextBlockPosition = Vec2(nextBlockLayer->getContentSize().width/2, nextBlockLayer->getContentSize().height/2);
     bornPosition = Vec2(GAME_VIEW_WIDTH/2, GAME_VIEW_HEIGHT+NODE_HEIGHT);
 
+#pragma mark - 按钮监听绑定
         //定义按钮监听器
     ui::Widget::ccWidgetClickCallback btnClickCallback = [this](Ref * ref)
         {
@@ -125,7 +117,7 @@ bool GameScene::init()
             switch (btn->getTag()) {
                 case PAUSE:
                 {
-                    this->running?this->gamePause():this->gameStart();
+                    this->running?this->gamePause():this->gameReStart();
                     running = !running;
                 }
                     break;
@@ -208,16 +200,24 @@ bool GameScene::init()
     scoreText = dynamic_cast<Text*>(rootNode->getChildByName("score"));
     updateScore(0);
 //    scheduleUpdate();
-    
+    //取出用户首选项数据
     isNetWork = UserDefault::getInstance()->getBoolForKey("isNetWork", false);
+    //判断是单人游戏还是双人游戏
     if (isNetWork)
     {
-        Label * label = Label::createWithSystemFont("正在连接服务器，请耐心等待。。。", "", 50);
+        //双人游戏
+        Label * label = Label::createWithSystemFont("正在连接服务器，请耐心等待。。。", "", 50);//提示文字
         label->setPosition(Vec2(320,480));
         gameViewLayer->addChild(label);
+        if(connectServer())
+        {
+            label->setVisible(false);//设置提示文字不可见
+            //开始游戏
+            gameStart();
+        }
         
     }else{
-        
+        //单人游戏
         gameStart();
     
     }
@@ -231,17 +231,18 @@ void GameScene::updateScore(int score_i)
     auto scoreString = StringUtils::format("%d",score);
     scoreText->setString(scoreString);
 }
-
+#pragma mark -创建方块，如果参数为空，则重新随机生成，若为BaseBlock则进行克隆
 BaseBlock * GameScene::createNewBlock(BaseBlock* oriBlock)
 {
     BaseBlock*block;
     int TAG;
     int rotatedTAG;
     if (oriBlock)
-    {
+    {   //根据TAG和宣旋转进行克隆
         TAG = oriBlock->getTag();
         rotatedTAG = oriBlock->getRotatedTAG();
     }else{
+        //随机生成
         TAG = (int)(CCRANDOM_0_1()*10)%7;
         rotatedTAG = (int)(CCRANDOM_0_1()*10)%4;
     }
@@ -281,7 +282,7 @@ BaseBlock * GameScene::createNewBlock(BaseBlock* oriBlock)
     block->setRotatedTAG(rotatedTAG);
     return block;
 }
-
+#pragma mark -碰撞检测
 void GameScene::blockCollide()
 {
     if (!canMoveDown())
@@ -317,7 +318,7 @@ void GameScene::blockCollide()
         }
     }
 }
-
+#pragma mark -判断正在下落的方块能否左右移动
 bool GameScene::canMoveLeft()
 {
     auto nodes = currentBlock->getNodes();
@@ -412,7 +413,7 @@ bool GameScene::canMoveDown()
     }
     return true;
 }
-
+#pragma mark -消除满行的方块
 void GameScene::deleteCompleteLine()
 {
     //lines为屏幕中行数，共20行，这里初始化行数
@@ -474,7 +475,7 @@ void GameScene::deleteCompleteLine()
     
 }
 
-
+#pragma mark -判断游戏是否结束
 bool GameScene::isGameOver()
 {
     //如果已落下的方块中，y轴坐标超出了游戏区域，则游戏结束
@@ -553,7 +554,7 @@ bool GameScene::isOutofGameView()
 
     return false;
 }
-
+#pragma mark -添加新方块
 void GameScene::addNewBlock()
 {
     currentBlock = createNewBlock(nextBlock);
@@ -568,9 +569,10 @@ void GameScene::addNewBlock()
     nextBlock->setScale(0.7);
     nextBlockLayer->addChild(nextBlock);
 }
-
+#pragma mark -开始游戏
 void GameScene::gameStart()
 {
+    //开启计时器
     scheduleUpdate();
     nextBlock = createNewBlock(nullptr);
     nextBlock->setPosition(nextBlockPosition);
@@ -599,6 +601,7 @@ void GameScene::gameReStart()
     scheduleUpdate();
     currentBlock->setBlockSchedule(BLOCK_SPEED);
 }
+
 void GameScene::gameBack()
 {
     //停止背景音乐的播放
@@ -608,20 +611,21 @@ void GameScene::gameBack()
     //弹出当前游戏场景
     Director::getInstance()->popScene();
 }
-//定时器
+#pragma mark -定时器 检测是否发生碰撞
 void GameScene::update(float delta)
 {
     blockCollide();
 }
 
-
+#pragma mark -添加障碍方法
 void GameScene::addBottmBlocks()
 {
+    //将已经落下的方块全部上移一个单位长度
     for (auto it = fallenNodes->begin(); it!=fallenNodes->end(); it++)
     {
         (*it)->moveUp();
     }
-
+    //添加红色方块到游戏界面最底部
     for (int i = 0; i<10; i++)
     {
         if (i%2)
@@ -635,18 +639,20 @@ void GameScene::addBottmBlocks()
         fallenNodes->pushBack(node);
     }
 }
+#pragma mark - 双人对战时，连接服务器 Socket
 bool GameScene::connectServer()
 {
     // 初始化
     // ODSocket socket;
-    socket.Init();
-    socket.Create(AF_INET, SOCK_STREAM, 0);
+    socket.Init(); //初始化Socket
+    socket.Create(AF_INET, SOCK_STREAM, 0); //创建Socket  AF_INET_ TCP连接     SOCKET_STREAM 流数据
     
     // 设置服务器的IP地址，端口号
     // 并连接服务器 Connect
 //    const char* ip = "127.0.0.1";
 //    int port = 12345;
-    bool result = socket.Connect(SERVER_IP  , PORT);
+     // 服务器IP,PORT端口号
+    bool result = socket.Connect(SERVER_IP, PORT); //绑定IP 和 端口
     
     // 发送数据 Send
 //    socket.Send("login", 5);
@@ -663,24 +669,31 @@ bool GameScene::connectServer()
         return false;
     }
 }
-
+#pragma mark - 发送消息
 void GameScene::sendData()
 {
     socket.Send("1", 1);
 }
-
+#pragma mark - 接收服务器消息
 void GameScene::receiveData()
 {
     // 因为是强联网
     // 所以可以一直检测服务端是否有数据传来
     while (true)
     {
-        // 接收数据 Recv
+        //缓冲区数据
         char data[512] = "";
+        //接受服务器数据
         int result = socket.Recv(data, 512, 0);
         printf("%d", result);
         // 与服务器的连接断开了
         if (result <= 0) break;
+        //接受到设置障碍消息
+        if (result==1)
+        {
+            //添加方块
+            addBottmBlocks();
+        }
         CCLOG("%s", data);
     }
     // 关闭连接

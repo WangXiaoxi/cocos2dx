@@ -66,14 +66,17 @@ void MenuScene::clickCallback(cocos2d::Ref *ref)
     Node * node = dynamic_cast<Node*>(ref);
     int tag = node->getTag();
     switch (tag) {
+            //单人游戏
         case ClickTag::START_GAME:
         {
+            //设置用户首选项数据为单机版
             UserDefault::getInstance()->setBoolForKey("isNetWork", false);
             Director::getInstance()->pushScene(TransitionFade::create(0.5, GameScene::createScene()));
         }
             break;
+            //双人游戏
         case ClickTag::START_GAME_DOUBLE_PLAYER:
-        {
+        {   //设置用户首选项数据为对战版
             UserDefault::getInstance()->setBoolForKey("isNetWork", true);
             Director::getInstance()->pushScene(TransitionFade::create(0.5, ServerSelect::createScene()));
         }

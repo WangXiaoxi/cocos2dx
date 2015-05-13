@@ -41,7 +41,7 @@ bool BaseBlock::initWithFile(std::string &filename)
     return true;
 }
 
-
+//方块基类的计时器
 void BaseBlock::setBlockSchedule(float dt)
 {
     if (dt==0)
